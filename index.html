@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORMA — Кухни и офисная мебель на заказ | Ростов-на-Дону</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        serif: ['Cormorant Garamond', 'serif'],
+        sans: ['Manrope', 'sans-serif'],
+      },
+      colors: {
+        ink: '#141E2A',
+        ink2: '#1B2736',
+        card: '#1E2D3D',
+        line: '#233246',
+        mint: '#6ED3C8',
+        mint2: '#A7F3EC',
+        paper: '#E8EEF2',
+        muted: '#8AA0B8',
+      }
+    }
+  }
+}
+</script>
+<style>
+:root{ --bg:#141E2A; --bg2:#182636; --line:#233246; --mint:#6ED3C8; --paper:#E8EEF2; --muted:#8AA0B8; }
+*{ -webkit-font-smoothing:antialiased; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--bg); color:var(--paper); font-family:Manrope, sans-serif; overflow-x:hidden; }
+.serif{ font-family:'Cormorant Garamond', serif; }
+.noise::before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero-visual{
+  position:absolute; right:0; top:0; width:54%; height:100%;
+  clip-path: ellipse(74% 72% at 84% 50%);
+  overflow:hidden; z-index:1;
+}
+.hero-visual img{ width:100%; height:100%; object-fit:cover; transform:scale(1.02); transition:transform 8s ease; }
+.hero-visual::after{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(80% 80% at 20% 50%, rgba(20,30,42,0.15) 0%, rgba(20,30,42,0.55) 100%);
+}
+@media(max-width:900px){
+  .hero-visual{ width:100%; height:58%; top:auto; bottom:0; clip-path: ellipse(110% 70% at 50% 100%); opacity:.9; }
+}
+.reveal{ opacity:0; transform:translateY(18px); transition: all .7s cubic-bezier(.2,.8,.2,1); }
+.reveal.in{ opacity:1; transform:none; }
+.card-hover{ transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+.card-hover:hover{ transform:translateY(-4px); border-color:rgba(110,211,200,.35); }
+.btn-primary{
+  background:var(--paper); color:#0E1722; position:relative; overflow:hidden;
+  transition: all .25s;
+}
+.btn-primary:hover{ background:var(--mint); transform:translateY(-1px); }
+.btn-ghost{ border:1px solid var(--line); transition:.25s; }
+.btn-ghost:hover{ border-color:var(--paper); background:rgba(232,238,242,.06); }
+.input{
+  background:#1A2A3B; border:1px solid #26374D; color:var(--paper);
+  transition:border-color .2s, background .2s;
+}
+.input:focus{ outline:none; border-color:var(--mint); background:#1E3045; }
+.input::placeholder{ color:#5A708A; }
+.shimmer{ position:relative; overflow:hidden; }
+.shimmer::after{
+  content:""; position:absolute; inset:0; transform:translateX(-100%);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  animation: shimmer 2.8s infinite;
+}
+@keyframes shimmer{ 100%{ transform:translateX(100%); } }
+</style>
+</head>
+<body class="noise">
+<!-- Header -->
+<header id="header" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-[9px] bg-[#E8EEF2] text-[#141E2A] grid place-items-center font-bold text-[13px] tracking-[0.12em]">F</div>
+        <span class="serif text-[22px] tracking-[0.02em] font-medium leading-none">FORMA</span>
+        <span class="hidden md:inline text-[10px] tracking-[0.22em] text-[#8AA0B8] uppercase translate-y-[2px] ml-1">Ростов-на-Дону</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-[13px] tracking-[0.02em] text-[#9AB0C7]">
+        <a href="#portfolio" class="hover:text-white transition">Портфолио</a>
+        <a href="#why" class="hover:text-white transition">Почему мы</a>
+        <a href="#process" class="hover:text-white transition">Как работаем</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:+78633102244" class="hidden md:flex text-[13px] text-[#9AB0C7] hover:text-white transition">+7 863 310-22-44</a>
+      <button onclick="scrollToForm()" class="hidden md:inline-flex btn-primary h-9 px-5 rounded-full text-[13px] font-semibold tracking-[0.02em]">Рассчитать</button>
+      <button id="burger" class="lg:hidden w-9 h-9 rounded-full border border-[#26374D] grid place-items-center">
+        <span class="block w-4 h-[2px] bg-white mb-[4px]"></span>
+        <span class="block w-4 h-[2px] bg-white"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobMenu" class="lg:hidden hidden border-t border-[#233246] bg-[#141E2A]/95 backdrop-blur-xl">
+    <div class="px-6 py-6 flex flex-col gap-4 text-[15px]">
+      <a href="#portfolio" class="moblink">Портфолио</a>
+      <a href="#why" class="moblink">Почему мы</a>
+      <a href="#process" class="moblink">Как работаем</a>
+      <a href="#contact" class="moblink">Контакты</a>
+      <button onclick="scrollToForm()" class="btn-primary h-11 rounded-full font-semibold mt-2">Рассчитать стоимость</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative min-h-[92vh] flex items-center overflow-hidden">
+  <div class="absolute inset-0 bg-[#141E2A]"></div>
+  <div class="hero-visual">
+    <img id="heroImg" src="https://www.designarena.ai/u/d92642f3-67e5-4cdf-ad37-37482d990e44" alt="Кухня-остров с контурной подсветкой — проект FORMA, Ростов-на-Дону. Фасады эмаль soft-touch, остров из кварца, скрытая LED-подсветка">
+  </div>
+  <!-- gradient for readability on mobile -->
+  <div class="absolute inset-0 md:hidden bg-gradient-to-t from-[#141E2A] via-[#141E2A]/70 to-transparent z-[1] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8 w-full pt-24 pb-10 md:py-0">
+    <div class="max-w-[640px]">
+      <div class="reveal in flex items-center gap-3 mb-6">
+        <span class="inline-flex items-center gap-2 text-[10px] tracking-[0.22em] uppercase text-[#8AA0B8] border border-[#26374D] rounded-full px-3 py-1.5 bg-[#1A2A3B]/60 backdrop-blur">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#6ED3C8] animate-pulse"></span> Цех в Ростове • 14 дней • Монтаж за 1 день
+        </span>
+      </div>
+
+      <h1 class="reveal in serif text-[44px] md:text-[66px] leading-[0.92] tracking-[-0.02em] font-[500]">
+        Кухни, в которых<br>
+        <span class="text-[#6ED3C8] font-[400] italic">хочется жить.</span><br>
+        Офисы, в которых<br>
+        хочется работать.
+      </h1>
+
+      <p class="reveal in mt-6 text-[16px] md:text-[18px] leading-[1.55] text-[#A8BDD4] max-w-[520px]">
+        Проектируем и производим мебель на заказ в Ростове-на-Дону. Без шаблонов. Под ваш рост, ритм и пространство. ЧПУ-точность, фасады Fenix и AGT, фурнитура Blum.
+      </p>
+
+      <div class="reveal in mt-8 flex flex-wrap gap-3">
+        <button onclick="scrollToForm()" class="btn-primary h-[48px] px-7 rounded-full text-[14px] font-semibold tracking-[0.02em] inline-flex items-center gap-2 shimmer">
+          Получить 3D-проект за 48 часов
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})" class="btn-ghost h-[48px] px-7 rounded-full text-[14px] font-medium text-[#C6D5E5]">Смотреть работы</button>
+      </div>
+
+      <div class="reveal in mt-8 grid grid-cols-1 gap-3 max-w-[520px]">
+        <div class="flex gap-3 items-start text-[13.5px] leading-[1.5] text-[#B9CADB]">
+          <span class="mt-[7px] w-5 h-[1px] bg-[#6ED3C8] shrink-0"></span>
+          <span><b class="text-white font-semibold">Замер + 3D-визуализация — 0₽</b> при заказе. Приезжаем с лазером и сканером, 2 правки включены.</span>
+        </div>
+        <div class="flex gap-3 items-start text-[13.5px] leading-[1.5] text-[#B9CADB]">
+          <span class="mt-[7px] w-5 h-[1px] bg-[#6ED3C8] shrink-0"></span>
+          <span><b class="text-white font-semibold">ЧПУ до 0,1 мм.</b> Зазоры как в немецком авто. Фасады не боятся влаги и детских художеств.</span>
+        </div>
+        <div class="flex gap-3 items-start text-[13.5px] leading-[1.5] text-[#B9CADB]">
+          <span class="mt-[7px] w-5 h-[1px] bg-[#6ED3C8] shrink-0"></span>
+          <span><b class="text-white font-semibold">Монтаж за 1 день</b> без пыли. С пылесосом, лазерным уровнем и уборкой после.</span>
+        </div>
+      </div>
+
+      <div class="reveal in mt-10 flex items-center gap-4 text-[11px] tracking-[0.08em] text-[#6B839C]">
+        <div class="flex -space-x-2">
+          <img src="https://i.pravatar.cc/32?img=5" class="w-7 h-7 rounded-full border border-[#141E2A] object-cover">
+          <img src="https://i.pravatar.cc/32?img=32" class="w-7 h-7 rounded-full border border-[#141E2A] object-cover">
+          <img src="https://i.pravatar.cc/32?img=12" class="w-7 h-7 rounded-full border border-[#141E2A] object-cover">
+        </div>
+        <span>42 проекта в 2024 • ЖК Вересаево, Левенцовка, Красный Аксай, Суворовский</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 right-[54%] md:right-[48%] z-20 hidden md:flex items-center gap-2 text-[10px] tracking-[0.18em] uppercase text-[#5A708A]">
+    <span class="w-10 h-[1px] bg-[#2A3C52]"></span> На фото: кухня-остров «Мятный свет», 19 м², эмаль + кварц
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="relative border-t border-[#1E2D3D] bg-[#182636]">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+      <div>
+        <div class="text-[11px] tracking-[0.24em] uppercase text-[#6ED3C8] mb-3">Портфолио / 2023—2025</div>
+        <h2 class="serif text-[36px] md:text-[48px] leading-[0.95] tracking-[-0.02em]">Работы, которые говорят<br>сами за себя</h2>
+      </div>
+      <div class="flex gap-2 p-1 rounded-full bg-[#141E2A] border border-[#233246]">
+        <button data-filter="all" class="filter-btn active px-4 h-8 rounded-full text-[13px] bg-white text-[#141E2A] font-semibold">Все</button>
+        <button data-filter="kitchen" class="filter-btn px-4 h-8 rounded-full text-[13px] text-[#8AA0B8] hover:text-white">Кухни</button>
+        <button data-filter="office" class="filter-btn px-4 h-8 rounded-full text-[13px] text-[#8AA0B8] hover:text-white">Офисы</button>
+      </div>
+    </div>
+
+    <div id="portfolioGrid" class="grid md:grid-cols-2 gap-[18px]">
+      <!-- Card 1 -->
+      <article data-type="kitchen" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#233246] bg-[#1E2D3D] card-hover cursor-pointer">
+        <div class="aspect-[4/2.9] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop" alt="Кухня минимализм ЖК Вересаево" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] tracking-[0.08em] text-white border border-white/10">ЖК Вересаево • 84 м²</span>
+            <span class="px-3 py-1 rounded-full bg-[#6ED3C8] text-[11px] font-semibold text-[#0E1722]">Кухня</span>
+          </div>
+        </div>
+        <div class="p-6 md:p-7">
+          <h3 class="serif text-[24px] leading-[1.1]">Кухня-невидимка для ЖК Вересаево</h3>
+          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Моно-кухня без верхних ручек. Фасады Fenix NTM не оставляют отпечатков, столешница — кварцевый агломерат. Все хранение спрятано в три высокие колонны, техника — за фасадами.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px] tracking-[0.04em] text-[#8AA0B8]">
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Fenix NTM • Egger • Avant Quartz</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Blum Legrabox / Aventos HF</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">16 дней</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article data-type="office" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#233246] bg-[#1E2D3D] card-hover cursor-pointer">
+        <div class="aspect-[4/2.9] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Офис БЦ Гвардейский" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] text-white border border-white/10">БЦ Гвардейский • 120 м²</span>
+            <span class="px-3 py-1 rounded-full bg-white text-[11px] font-semibold text-[#141E2A]">Офис</span>
+          </div>
+        </div>
+        <div class="p-6 md:p-7">
+          <h3 class="serif text-[24px] leading-[1.1]">Графитовый офис. БЦ Гвардейский</h3>
+          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">12 рабочих мест и переговорная. Акустические панели, скрытая кабельная система и столы с регулировкой высоты. Темный, тихий, собранный — для фокуса.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-[#8AA0B8]">
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Cleaf • Металл • Ткань</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Hettich • Boyard</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">11 дней</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 (uses provided image) -->
+      <article data-type="kitchen" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#2A3D54] bg-[#1E2D3D] card-hover cursor-pointer ring-1 ring-[#6ED3C8]/20">
+        <div class="aspect-[4/2.9] overflow-hidden relative">
+          <img src="https://www.designarena.ai/u/d92642f3-67e5-4cdf-ad37-37482d990e44" alt="Мятный свет ЖК Красный Аксай" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#141E2A]/30 to-transparent"></div>
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] text-white border border-white/10">ЖК Красный Аксай • 19 м²</span>
+            <span class="px-3 py-1 rounded-full bg-[#6ED3C8] text-[11px] font-semibold text-[#0E1722]">Хит</span>
+          </div>
+        </div>
+        <div class="p-6 md:p-7">
+          <h3 class="serif text-[24px] leading-[1.1]">Мятный свет. Кухня-остров с подсветкой</h3>
+          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Кухня-остров с контурной подсветкой. Глянцевая эмаль, каменный остров и интегрированная мойка. Свет — часть архитектуры, а не декор.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-[#8AA0B8]">
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Эмаль • Neomarm • LED 3000K</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Blum • Vauth-Sagel</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">21 день</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article data-type="kitchen" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#233246] bg-[#1E2D3D] card-hover cursor-pointer">
+        <div class="aspect-[4/2.9] overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Кухня Суворовский" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] text-white border border-white/10">Суворовский • 72 м² • Семья</span>
+            <span class="px-3 py-1 rounded-full bg-white/90 text-[11px] font-semibold text-[#141E2A]">Кухня</span>
+          </div>
+        </div>
+        <div class="p-6 md:p-7">
+          <h3 class="serif text-[24px] leading-[1.1]">Кухня для семьи с двумя детьми</h3>
+          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Радиусные фасады без острых углов, антресоли до потолка и огромный пенал для техники. Выдерживает всё — от пластилина до кастрюли борща.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-[#8AA0B8]">
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Soft-touch • HPL • Кварц</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Blum • Kessebohmer</span>
+            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">14 дней</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="relative bg-[#141E2A] border-t border-[#1E2D3D]">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
+    <div class="grid lg:grid-cols-[380px_1fr] gap-10 lg:gap-16">
+      <div class="reveal">
+        <div class="text-[11px] tracking-[0.24em] uppercase text-[#6ED3C8] mb-4">Почему FORMA</div>
+        <h2 class="serif text-[38px] md:text-[44px] leading-[0.95]">Делаем как для себя.<br>Поэтому — на совесть.</h2>
+        <p class="mt-5 text-[14.5px] leading-[1.7] text-[#8AA0B8]">Без «итальянских» пленок из соседнего гаража. Только то, за что не стыдно через 5 лет.</p>
+        <div class="mt-8 p-4 rounded-[16px] bg-[#182636] border border-[#233246] flex gap-3 items-center">
+          <div class="w-10 h-10 rounded-full bg-[#6ED3C8]/15 grid place-items-center text-[#6ED3C8]">✓</div>
+          <div class="text-[13px] leading-[1.5] text-[#B9CADB]"><b class="text-white">Гарантия 36 месяцев</b> — прописана в договоре. Сервис после — бесплатно.</div>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-[14px]">
+        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7">
+          <div class="w-9 h-9 rounded-full bg-white text-[#141E2A] grid place-items-center text-[14px] font-bold">01</div>
+          <h4 class="mt-5 font-semibold text-[16px]">ЧПУ-точность до 0,1 мм</h4>
+          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Пилим на Biesse Rover. Кромка PUR — не отклеится от пара. Зазоры 1 мм, как у Blum в каталоге.</p>
+          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Biesse • PUR • Лазерный уровень</div>
+        </div>
+        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7" style="transition-delay:.08s">
+          <div class="w-9 h-9 rounded-full bg-white text-[#141E2A] grid place-items-center text-[14px] font-bold">02</div>
+          <h4 class="mt-5 font-semibold text-[16px]">Честные материалы</h4>
+          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Fenix NTM, AGT, Egger, Cleaf. Кварц и акрил — с сертификатами. Покажем в цеху, дадим пощупать.</p>
+          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Fenix • AGT Supramat • Egger</div>
+        </div>
+        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7" style="transition-delay:.16s">
+          <div class="w-9 h-9 rounded-full bg-[#6ED3C8] text-[#0E1722] grid place-items-center text-[14px] font-bold">03</div>
+          <h4 class="mt-5 font-semibold text-[16px]">Лазерный замер</h4>
+          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Приезжаем с 3D-сканером. Учитываем завал стен до 2 мм, выводы воды и розетки. Ошибок — ноль.</p>
+          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Leica • 3D-скан • 2 часа на объекте</div>
+        </div>
+        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7" style="transition-delay:.24s">
+          <div class="w-9 h-9 rounded-full bg-white text-[#141E2A] grid place-items-center text-[14px] font-bold">04</div>
+          <h4 class="mt-5 font-semibold text-[16px]">Без сюрпризов в смете</h4>
+          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Цена в договоре — финальная. Без «ой, забыли посчитать ручки». 70% — предоплата, 30% — после монтажа.</p>
+          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Договор • Фикс-цена • Рассрочка 0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="relative bg-[#182636] border-y border-[#233246]">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
+    <div class="flex flex-wrap justify-between items-end gap-6 mb-12">
+      <h2 class="reveal serif text-[36px] md:text-[46px] leading-[0.95]">От заявки до монтажа —<br>15 дней и 4 шага</h2>
+      <p class="reveal text-[13.5px] leading-[1.6] text-[#8AA0B8] max-w-[360px]">Вы не бегаете по салонам. Мы приезжаем, считаем, делаем. Вы только выбираете ручки.</p>
+    </div>
+
+    <div class="relative grid md:grid-cols-4 gap-[14px]">
+      <div class="hidden md:block absolute top-[32px] left-[12%] right-[12%] h-[1px] bg-gradient-to-r from-[#233246] via-[#2E4A5E] to-[#233246]"></div>
+
+      <div class="reveal relative rounded-[20px] bg-[#141E2A] border border-[#233246] p-7">
+        <div class="w-8 h-8 rounded-full bg-[#E8EEF2] text-[#141E2A] grid place-items-center text-[12px] font-bold">1</div>
+        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 1</div>
+        <h4 class="mt-2 font-semibold text-[16px]">Заявка и замер</h4>
+        <p class="mt-2 text-[13px] leading-[1.6] text-[#8AA0B8]">Выезд в день обращения по Ростову. Замер лазером, обсуждение быта, черновые идеи на месте.</p>
+        <div class="mt-4 text-[11px] text-[#5A708A]">Бесплатно • 90 минут</div>
+      </div>
+      <div class="reveal relative rounded-[20px] bg-[#141E2A] border border-[#233246] p-7" style="transition-delay:.08s">
+        <div class="w-8 h-8 rounded-full bg-[#E8EEF2] text-[#141E2A] grid place-items-center text-[12px] font-bold">2</div>
+        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 2–3</div>
+        <h4 class="mt-2 font-semibold text-[16px]">3D-проект и смета</h4>
+        <p class="mt-2 text-[13px] leading-[1.6] text-[#8AA0B8]">Фотореалистичная визуализация + точная смета без скрытых доплат. 2 правки — включены.</p>
+        <div class="mt-4 text-[11px] text-[#5A708A]">3 ракурса • Спецификация</div>
+      </div>
+      <div class="reveal relative rounded-[20px] bg-[#141E2A] border border-[#233246] p-7" style="transition-delay:.16s">
+        <div class="w-8 h-8 rounded-full bg-[#6ED3C8] text-[#0E1722] grid place-items-center text-[12px] font-bold">3</div>
+        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 4–14</div>
+        <h4 class="mt-2 font-semibold text-[16px]">Производство</h4>
+        <p class="mt-2 text-[13px] leading-[1.6] text-[#8AA0B8]">ЧПУ-раскрой, кромка PUR, сборка на шканты. Фото-отчет с цеха каждые 3 дня в Telegram.</p>
+        <div class="mt-4 text-[11px] text-[#5A708A]">Цех на Вавилова • Biesse</div>
+      </div>
+      <div class="reveal relative rounded-[20px] bg-[#1E2D3D] border border-[#6ED3C8]/30 p-7" style="transition-delay:.24s">
+        <div class="w-8 h-8 rounded-full bg-white text-[#141E2A] grid place-items-center text-[12px] font-bold">4</div>
+        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 15</div>
+        <h4 class="mt-2 font-semibold text-[16px]">Доставка и монтаж</h4>
+        <p class="mt-2 text-[13px] leading-[1.6] text-[#A8BDD4]">Привезем, поднимем, соберем за 1 день. Подключим технику, уберем мусор. Сдаем с уровнем.</p>
+        <div class="mt-4 text-[11px] text-[#5A708A]">Без пыли • Уборка включена</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" class="relative bg-[#141E2A]">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-12 items-start">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8] border border-[#233246] rounded-full px-3 py-1.5 bg-[#182636]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#6ED3C8]"></span> Отвечает технолог, а не менеджер
+        </div>
+        <h2 class="serif mt-6 text-[38px] md:text-[52px] leading-[0.92] tracking-[-0.02em]">Рассчитаем стоимость<br>вашего проекта за 2 часа</h2>
+        <p class="mt-5 text-[15px] leading-[1.6] text-[#A8BDD4] max-w-[520px]">Отправьте размеры или планировку — пришлем 3 варианта сметы в WhatsApp / Telegram. Без навязчивых звонков. Среднее время ответа — 17 минут.</p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[520px]">
+          <div class="rounded-[14px] bg-[#182636] border border-[#233246] p-4 flex gap-3">
+            <div class="w-9 h-9 rounded-full bg-[#1E2D3D] grid place-items-center text-[#6ED3C8]">✦</div>
+            <div class="text-[13px] leading-[1.5]"><b class="text-white">3 варианта сметы</b><br><span class="text-[#8AA0B8]">Эконом / Оптимум / Премиум</span></div>
+          </div>
+          <div class="rounded-[14px] bg-[#182636] border border-[#233246] p-4 flex gap-3">
+            <div class="w-9 h-9 rounded-full bg-[#1E2D3D] grid place-items-center text-[#6ED3C8]">◐</div>
+            <div class="text-[13px] leading-[1.5]"><b class="text-white">3D-визуализация</b><br><span class="text-[#8AA0B8]">В подарок при заказе</span></div>
+          </div>
+        </div>
+
+        <div class="mt-10 hidden lg:flex items-center gap-6 text-[13px] text-[#8AA0B8]">
+          <div class="flex items-center gap-2"><span class="w-6 h-[1px] bg-[#2A3C52]"></span> Цех: ул. Вавилова, 62, Ростов</div>
+          <div>Пн-Сб 9:00–19:00</div>
+        </div>
+      </div>
+
+      <div class="reveal rounded-[24px] bg-[#1B2A3A] border border-[#233246] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
+        <form id="leadForm" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Имя</label>
+              <input name="name" required placeholder="Как к вам обращаться" class="input mt-1.5 w-full h-11 rounded-full px-4 text-[14px]">
+            </div>
+            <div>
+              <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Телефон *</label>
+              <input name="phone" required type="tel" placeholder="+7 900 000-00-00" class="input mt-1.5 w-full h-11 rounded-full px-4 text-[14px]">
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Что делаем?</label>
+            <div class="mt-1.5 grid grid-cols-3 gap-2">
+              <label class="cursor-pointer"><input type="radio" name="type" value="Кухня" checked class="peer sr-only"><div class="h-10 rounded-full border border-[#2A3C52] peer-checked:bg-white peer-checked:text-[#141E2A] peer-checked:border-white grid place-items-center text-[13px] transition">Кухня</div></label>
+              <label class="cursor-pointer"><input type="radio" name="type" value="Офис" class="peer sr-only"><div class="h-10 rounded-full border border-[#2A3C52] peer-checked:bg-white peer-checked:text-[#141E2A] peer-checked:border-white grid place-items-center text-[13px] transition">Офис</div></label>
+              <label class="cursor-pointer"><input type="radio" name="type" value="Гардеробная" class="peer sr-only"><div class="h-10 rounded-full border border-[#2A3C52] peer-checked:bg-white peer-checked:text-[#141E2A] peer-checked:border-white grid place-items-center text-[13px] transition">Другое</div></label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Размеры / Площадь</label>
+            <input name="size" placeholder="Напр. 3.2м прямая, потолок 2.7м, ЖК Вересаево" class="input mt-1.5 w-full h-11 rounded-full px-4 text-[14px]">
+          </div>
+
+          <div>
+            <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Комментарий</label>
+            <textarea name="comment" rows="3" placeholder="Что важно: техника, количество хранения, бюджет..." class="input mt-1.5 w-full rounded-[16px] px-4 py-3 text-[14px] resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full h-[48px] rounded-full text-[14px] font-semibold tracking-[0.02em] flex items-center justify-center gap-2">
+            Получить расчет за 2 часа
+            <span class="w-5 h-5 rounded-full bg-[#141E2A] text-white grid place-items-center text-[12px]">→</span>
+          </button>
+
+          <div class="flex items-start gap-2 text-[11px] leading-[1.4] text-[#6B839C] pt-1">
+            <input type="checkbox" checked class="mt-[2px] accent-[#6ED3C8]">
+            <span>Согласен на обработку данных. Не спамим, только по проекту. <a href="#" class="underline hover:text-white">Политика</a></span>
+          </div>
+        </form>
+
+        <div class="mt-6 flex items-center gap-3 text-[12px] text-[#8AA0B8]">
+          <img src="https://i.pravatar.cc/32?img=15" class="w-7 h-7 rounded-full">
+          <span><b class="text-white">Алексей</b>, технолог FORMA, ответит в Telegram в течение 17 минут</span>
+          <span class="ml-auto w-2 h-2 rounded-full bg-[#35D07F]"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-[#1E2D3D]">
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between text-[12px] text-[#5A708A]">
+      <div class="flex items-center gap-6">
+        <span class="serif text-[18px] text-[#E8EEF2]">FORMA</span>
+        <span>© 2025 Мебель на заказ, Ростов-на-Дону</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <span>ИП Ковалев • ИНН 6164000000</span>
+        <a href="#" class="hover:text-white">Instagram</a>
+        <a href="#" class="hover:text-white">Telegram</a>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<!-- Modal -->
+<div id="projectModal" class="fixed inset-0 z-[70] hidden">
+  <div id="modalBg" class="absolute inset-0 bg-[#0B121A]/80 backdrop-blur-[10px]"></div>
+  <div class="relative max-w-[960px] mx-auto mt-[6vh] mb-[4vh] mx-4 md:mx-auto bg-[#1B2A3A] border border-[#2A3C52] rounded-[24px] overflow-hidden">
+    <button id="modalClose" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#141E2A] border border-[#2A3C52] grid place-items-center text-white z-10">✕</button>
+    <div class="grid md:grid-cols-[1.2fr_.8fr]">
+      <div class="aspect-[4/3] bg-[#141E2A]"><img id="modalImg" src="" class="w-full h-full object-cover"></div>
+      <div class="p-7 md:p-8">
+        <div id="modalTag" class="inline-flex px-3 py-1 rounded-full bg-[#6ED3C8] text-[11px] font-semibold text-[#0E1722]">Кухня</div>
+        <h3 id="modalTitle" class="serif mt-4 text-[28px] leading-[1.05]"></h3>
+        <p id="modalText" class="mt-4 text-[14px] leading-[1.6] text-[#A8BDD4]"></p>
+        <div id="modalSpecs" class="mt-6 space-y-2 text-[13px]"></div>
+        <button onclick="scrollToForm(); closeModal()" class="btn-primary mt-8 w-full h-11 rounded-full font-semibold text-[14px]">Хочу такую же</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] hidden">
+  <div class="px-5 py-3 rounded-full bg-white text-[#141E2A] text-[13px] font-medium shadow-[0_10px_30px_rgba(0,0,0,.4)] flex items-center gap-2">
+    <span class="w-5 h-5 rounded-full bg-[#6ED3C8] grid place-items-center text-[#0E1722]">✓</span>
+    <span id="toastText">Заявка отправлена. Ответим за 17 минут.</span>
+  </div>
+</div>
+
+<script>
+// Header scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 20){ header.classList.add('bg-[#141E2A]/80','backdrop-blur-xl','border-[#1E2D3D]'); }
+  else { header.classList.remove('bg-[#141E2A]/80','backdrop-blur-xl','border-[#1E2D3D]'); }
+});
+
+// Burger
+document.getElementById('burger').addEventListener('click', ()=>{
+  document.getElementById('mobMenu').classList.toggle('hidden');
+});
+document.querySelectorAll('.moblink').forEach(a=> a.addEventListener('click', ()=>{
+  document.getElementById('mobMenu').classList.add('hidden');
+}));
+
+// Reveal
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Parallax hero
+const heroImg = document.getElementById('heroImg');
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY * 0.12;
+  if(heroImg) heroImg.style.transform = `scale(1.06) translateY(${y}px)`;
+});
+
+// Portfolio filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.portfolio-card');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    filterBtns.forEach(b=>{ b.classList.remove('active','bg-white','text-[#141E2A]','font-semibold'); b.classList.add('text-[#8AA0B8]'); });
+    btn.classList.add('active','bg-white','text-[#141E2A]','font-semibold');
+    btn.classList.remove('text-[#8AA0B8]');
+    const f = btn.dataset.filter;
+    cards.forEach(c=>{
+      if(f==='all' || c.dataset.type===f){ c.style.display=''; setTimeout(()=>c.style.opacity='1',10); }
+      else { c.style.opacity='0'; setTimeout(()=>c.style.display='none',200); }
+    });
+  });
+});
+
+// Modal
+const modal = document.getElementById('projectModal');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalText = document.getElementById('modalText');
+const modalTag = document.getElementById('modalTag');
+const modalSpecs = document.getElementById('modalSpecs');
+
+function openModalFromCard(card){
+  const img = card.querySelector('img').src;
+  const title = card.querySelector('h3').innerText;
+  const text = card.querySelector('p').innerText;
+  const tags = [...card.querySelectorAll('.mt-5 span')].map(s=>s.innerText);
+  modalImg.src = img;
+  modalTitle.innerText = title;
+  modalText.innerText = text;
+  modalTag.innerText = card.dataset.type==='kitchen' ? 'Кухня на заказ' : 'Офисная мебель';
+  modalSpecs.innerHTML = tags.map(t=>`<div class="flex gap-2"><span class="text-[#5A708A]">—</span><span class="text-[#C6D5E5]">${t}</span></div>`).join('');
+  modal.classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
+document.querySelectorAll('.portfolio-card').forEach(c=> c.addEventListener('click', ()=> openModalFromCard(c)));
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalBg').addEventListener('click', closeModal);
+
+// Scroll to form
+function scrollToForm(){
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{ document.querySelector('input[name="name"]').focus(); },600);
+}
+
+// Form
+document.getElementById('leadForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const phone = fd.get('phone');
+  if(!phone || phone.replace(/\D/g,'').length < 10){
+    showToast('Укажите корректный телефон');
+    return;
+  }
+  showToast(`Спасибо, ${fd.get('name')||''}! Расчет пришлем в Telegram за 2 часа.`);
+  e.target.reset();
+});
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').innerText = msg;
+  t.classList.remove('hidden');
+  setTimeout(()=> t.classList.add('hidden'), 3800);
+}
+</script>
+</body>
+</html>
