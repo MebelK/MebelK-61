@@ -906,74 +906,42 @@
     });
   });
 
-  form.addEventListener('submit', function(e) {
-  e.preventDefault();
+    form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phoneVal = document.getElementById('phone').value.trim();
+    var ptype = document.getElementById('ptype').value;
+    var psize = document.getElementById('psize').value.trim();
+    var comment = document.getElementById('pcomment').value.trim();
 
-  var name = document.getElementById('name').value.trim();
-  var phoneVal = document.getElementById('phone').value.trim();
-  var ptype = document.getElementById('ptype').value;
-  var psize = document.getElementById('psize').value.trim();
-  var comment = document.getElementById('pcomment').value.trim();
+    var ok = true;
+    ok = setError('f-name', name.length < 2) && ok;
+    ok = setError('f-phone', phoneVal.replace(/\D/g,'').length !== 11) && ok;
+    ok = setError('f-type', !ptype) && ok;
+    ok = setError('f-size', psize.length < 2) && ok;
 
-  var ok = true;
-
-  ok = setError('f-name', name.length < 2) && ok;
-  ok = setError('f-phone', phoneVal.replace(/\D/g, '').length !== 11) && ok;
-  ok = setError('f-type', !ptype) && ok;
-  ok = setError('f-size', psize.length < 2) && ok;
-
-  if (!ok) {
-    var firstErr = form.querySelector('.field.error input, .field.error select');
-
-    if (firstErr) {
-      firstErr.focus();
+    if(!ok){
+      var firstErr = form.querySelector('.field.error input, .field.error select');
+      if(firstErr) firstErr.focus();
+      return;
     }
 
-    return;
-  }
+    var lines = [
+      'Заявка с сайта — Мебель-К','',
+      'Имя: ' + name,
+      'Телефон: ' + phoneVal,
+      'Что делаем: ' + ptype,
+      'Размеры/площадь: ' + psize,
+      'Комментарии: ' + (comment || '—')
+    ];
+    var subject = 'Заявка с сайта — Мебель-К';
+    var body = lines.join('\n');
+    /* Отправка данных на почту MebelK-61@yandex.ru */
+    window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-  var submitBtn = form.querySelector('button[type="submit"]');
-  var originalBtnText = submitBtn ? submitBtn.innerText : '';
-
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Отправка...';
-  }
-
-  fetch('https://formspree.io/f/mnpnnrja', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      name: name,
-      phone: phoneVal,
-      product_type: ptype,
-      size: psize,
-      comment: comment || '—',
-      subject: 'Заявка с сайта — Мебель-К'
-    })
-  })
-  .then(function(response) {
-    if (!response.ok) {
-      throw new Error('Ошибка отправки формы');
-    }
-
-    return response.json();
-  })
-  .then(function() {
     form.style.display = 'none';
     success.classList.add('show');
-  })
-  .catch(function(error) {
-    console.error(error);
 
-    alert('Не удалось отправить заявку. Пожалуйста, попробуйте ещё раз или свяжитесь с нами в мессенджере.');
-
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerText = originalBtnText;
   });
 })();
 </script>
