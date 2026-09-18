@@ -3,589 +3,946 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FORMA — Кухни и офисная мебель на заказ | Ростов-на-Дону</title>
+<title>Мебель-К — кухни на заказ и мебель для офиса в Ростове-на-Дону</title>
+<meta name="description" content="Мебель-К — производство кухонь на заказ и мебели для офиса в Ростове-на-Дону и области с 2008 года. ЧПУ-точность 0,1 мм, фасады AGT и Evogloss, фурнитура Blum. 3D-проект за 48 часов.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect x='1' y='1' width='42' height='42' rx='12' fill='%231B2735'/%3E%3Cpath d='M12 30V15l10 11 10-11v15' fill='none' stroke='%235EEAD4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        serif: ['Cormorant Garamond', 'serif'],
-        sans: ['Manrope', 'sans-serif'],
-      },
-      colors: {
-        ink: '#141E2A',
-        ink2: '#1B2736',
-        card: '#1E2D3D',
-        line: '#233246',
-        mint: '#6ED3C8',
-        mint2: '#A7F3EC',
-        paper: '#E8EEF2',
-        muted: '#8AA0B8',
-      }
-    }
-  }
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&family=Unbounded:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{ --bg:#141E2A; --bg2:#182636; --line:#233246; --mint:#6ED3C8; --paper:#E8EEF2; --muted:#8AA0B8; }
-*{ -webkit-font-smoothing:antialiased; }
-html{ scroll-behavior:smooth; }
-body{ background:var(--bg); color:var(--paper); font-family:Manrope, sans-serif; overflow-x:hidden; }
-.serif{ font-family:'Cormorant Garamond', serif; }
-.noise::before{
-  content:""; position:fixed; inset:0; pointer-events:none; opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.hero-visual{
-  position:absolute; right:0; top:0; width:54%; height:100%;
-  clip-path: ellipse(74% 72% at 84% 50%);
-  overflow:hidden; z-index:1;
-}
-.hero-visual img{ width:100%; height:100%; object-fit:cover; transform:scale(1.02); transition:transform 8s ease; }
-.hero-visual::after{
-  content:""; position:absolute; inset:0;
-  background: radial-gradient(80% 80% at 20% 50%, rgba(20,30,42,0.15) 0%, rgba(20,30,42,0.55) 100%);
-}
-@media(max-width:900px){
-  .hero-visual{ width:100%; height:58%; top:auto; bottom:0; clip-path: ellipse(110% 70% at 50% 100%); opacity:.9; }
-}
-.reveal{ opacity:0; transform:translateY(18px); transition: all .7s cubic-bezier(.2,.8,.2,1); }
-.reveal.in{ opacity:1; transform:none; }
-.card-hover{ transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s; }
-.card-hover:hover{ transform:translateY(-4px); border-color:rgba(110,211,200,.35); }
-.btn-primary{
-  background:var(--paper); color:#0E1722; position:relative; overflow:hidden;
-  transition: all .25s;
-}
-.btn-primary:hover{ background:var(--mint); transform:translateY(-1px); }
-.btn-ghost{ border:1px solid var(--line); transition:.25s; }
-.btn-ghost:hover{ border-color:var(--paper); background:rgba(232,238,242,.06); }
-.input{
-  background:#1A2A3B; border:1px solid #26374D; color:var(--paper);
-  transition:border-color .2s, background .2s;
-}
-.input:focus{ outline:none; border-color:var(--mint); background:#1E3045; }
-.input::placeholder{ color:#5A708A; }
-.shimmer{ position:relative; overflow:hidden; }
-.shimmer::after{
-  content:""; position:absolute; inset:0; transform:translateX(-100%);
-  background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-  animation: shimmer 2.8s infinite;
-}
-@keyframes shimmer{ 100%{ transform:translateX(100%); } }
+  :root{
+    --bg:#1B2735;
+    --bg2:#16202D;
+    --panel:rgba(255,255,255,.035);
+    --panel-solid:#212F40;
+    --line:rgba(163,182,203,.14);
+    --text:#EEF3F8;
+    --muted:#A6B6C8;
+    --teal:#5EEAD4;
+    --cyan:#38BDF8;
+    --violet:#A78BFA;
+    --wa:#25D366;
+    --tg:#2AABEE;
+    --max:#8B5CF6;
+    --err:#F87171;
+    --grad:linear-gradient(120deg,#5EEAD4,#38BDF8 48%,#A78BFA);
+    --radius:22px;
+    --font-d:'Unbounded',sans-serif;
+    --font-b:'Manrope',sans-serif;
+    --font-s:'Playfair Display',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-b);
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  section{scroll-margin-top:92px}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
+  ::selection{background:rgba(94,234,212,.35)}
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:var(--bg2)}
+  ::-webkit-scrollbar-thumb{background:#2B3B50;border-radius:8px}
+  ::-webkit-scrollbar-thumb:hover{background:#3A4E68}
+
+  .container{width:min(1180px,92%);margin:0 auto}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:background .35s ease,box-shadow .35s ease,border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(19,27,38,.86);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom-color:var(--line);
+  }
+  .header-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+  .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .logo-text{line-height:1.1}
+  .logo-text b{font-family:var(--font-d);font-weight:400;font-size:15px;letter-spacing:.14em;display:block}
+  .logo-text em{font-style:normal;font-size:10.5px;letter-spacing:.08em;color:var(--muted);display:block;margin-top:3px}
+  nav.main{display:flex;gap:34px}
+  nav.main a{font-size:14px;font-weight:600;color:var(--muted);position:relative;padding:6px 0;transition:color .25s}
+  nav.main a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;border-radius:2px;background:var(--grad);transition:width .3s}
+  nav.main a:hover,nav.main a.active{color:#fff}
+  nav.main a.active::after,nav.main a:hover::after{width:100%}
+  .header-right{display:flex;align-items:center;gap:18px}
+  .header-phone{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14.5px;white-space:nowrap}
+  .header-phone svg{color:var(--teal)}
+  .header-phone:hover{color:var(--teal)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:999px;font-weight:700;font-size:15px;padding:15px 28px;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s;white-space:nowrap}
+  .btn-primary{background:linear-gradient(120deg,#5EEAD4,#38BDF8);color:#0A1B2A;box-shadow:0 10px 34px rgba(56,189,248,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(94,234,212,.38)}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.22);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+  .btn-sm{padding:11px 20px;font-size:13.5px}
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;width:46px;height:46px;position:relative;z-index:130}
+  .burger span{position:absolute;left:12px;right:12px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+  .burger span:nth-child(1){top:16px}
+  .burger span:nth-child(2){top:22px}
+  .burger span:nth-child(3){top:28px}
+  .burger.open span:nth-child(1){top:22px;transform:rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){top:22px;transform:rotate(-45deg)}
+
+  .mnav{position:fixed;inset:0;background:rgba(15,22,31,.97);backdrop-filter:blur(18px);z-index:120;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .3s}
+  .mnav.open{opacity:1;pointer-events:auto}
+  .mnav a.mlink{font-family:var(--font-d);font-weight:300;font-size:24px;padding:12px;color:var(--text)}
+  .mnav a.mlink:hover{color:var(--teal)}
+  .mnav-soc{display:flex;gap:14px;margin-top:28px}
+  .mnav-phone{margin-top:18px;font-size:18px;font-weight:700;color:var(--teal)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;isolation:isolate}
+  .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:18% center}
+  .hero-media.no-img{background:var(--bg)}
+  .hero-media.no-img img{display:none}
+  .hero-media.no-img::before{content:'';position:absolute;left:-28%;top:-22%;width:82%;height:150%;border-radius:50%;
+    background:
+      radial-gradient(55% 55% at 38% 55%,rgba(94,234,212,.34),transparent 68%),
+      radial-gradient(45% 45% at 55% 30%,rgba(56,189,248,.26),transparent 70%),
+      radial-gradient(40% 40% at 45% 80%,rgba(167,139,250,.24),transparent 70%),
+      linear-gradient(150deg,#1C3A4C,#23405A 45%,#34396A);}
+  .hero-overlay{position:absolute;inset:0;z-index:-1;
+    background:
+      linear-gradient(90deg,rgba(27,39,53,.18) 0%,rgba(27,39,53,.62) 42%,rgba(27,39,53,.94) 62%,var(--bg) 82%),
+      linear-gradient(180deg,rgba(22,32,45,.55) 0%,rgba(22,32,45,0) 22%,rgba(22,32,45,0) 72%,var(--bg) 100%);}
+  .hero-inner{display:flex;justify-content:flex-end}
+  .hero-content{max-width:640px}
+  .hero-badge{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(94,234,212,.3);border-radius:999px;padding:9px 18px;margin-bottom:28px;background:rgba(94,234,212,.06)}
+  .hero-badge i{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-family:var(--font-d);font-weight:300;font-size:clamp(27px,3.4vw,46px);line-height:1.22;letter-spacing:.01em;margin-bottom:24px}
+  .serif{font-family:var(--font-s);font-style:italic;font-weight:500;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-right:.06em}
+  .hero-sub{color:var(--muted);font-size:clamp(15px,1.35vw,17.5px);max-width:560px;margin-bottom:36px}
+  .hero-sub b{color:var(--text);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:44px}
+  .hero-points{display:flex;flex-direction:column;gap:16px}
+  .hpoint{display:flex;gap:16px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px 18px;backdrop-filter:blur(6px);transition:border-color .3s,transform .3s}
+  .hpoint:hover{border-color:rgba(94,234,212,.4);transform:translateX(6px)}
+  .hpoint-ic{flex-shrink:0;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(94,234,212,.16),rgba(167,139,250,.16));border:1px solid rgba(94,234,212,.28);color:var(--teal)}
+  .hpoint p{font-size:14px;color:var(--muted);line-height:1.55}
+  .hpoint strong{color:var(--text);font-weight:700;display:block;margin-bottom:2px}
+
+  /* ---------- marquee ---------- */
+  .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;background:rgba(255,255,255,.015)}
+  .marquee-track{display:flex;width:max-content;animation:mq 36s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .mq-group{display:flex;align-items:center;gap:52px;padding-right:52px}
+  .mq-group span{font-family:var(--font-d);font-weight:300;font-size:12.5px;letter-spacing:.24em;color:var(--muted);white-space:nowrap}
+  .mq-group i{color:var(--teal);font-style:normal;font-size:9px}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* ---------- sections ---------- */
+  .sec{padding:110px 0;position:relative}
+  .sec-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
+  .sec-eyebrow::before{content:'';width:34px;height:1px;background:var(--grad)}
+  h2{font-family:var(--font-d);font-weight:300;font-size:clamp(24px,3vw,40px);line-height:1.28;margin-bottom:18px}
+  .sec-sub{color:var(--muted);font-size:16.5px;max-width:640px}
+  .sec-head{margin-bottom:56px}
+
+  /* ---------- portfolio ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .card{background:var(--panel-solid);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,border-color .35s,box-shadow .35s}
+  .card:hover{transform:translateY(-8px);border-color:rgba(94,234,212,.42);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+  .card-media{position:relative;aspect-ratio:4/3;overflow:hidden}
+  .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .card:hover .card-media img{transform:scale(1.06)}
+  .card-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,32,45,0) 55%,rgba(22,32,45,.55));pointer-events:none}
+  .tag{position:absolute;top:16px;left:16px;z-index:2;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:rgba(15,22,31,.72);backdrop-filter:blur(8px);border:1px solid rgba(94,234,212,.4);color:var(--teal)}
+  .card-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1;gap:12px}
+  .card-body h3{font-family:var(--font-d);font-weight:400;font-size:17.5px;line-height:1.4}
+  .card-desc{font-size:14px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .card-quote{font-family:var(--font-s);font-style:italic;font-size:15px;color:#C9D6E4;border-left:2px solid;border-image:linear-gradient(180deg,#5EEAD4,#A78BFA) 1;padding-left:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .card-more{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:9px;background:none;border:none;color:var(--teal);font-weight:700;font-size:14px;padding:6px 0;transition:gap .25s,color .25s}
+  .card-more:hover{gap:15px;color:#fff}
+
+  /* ---------- advantages ---------- */
+  #advantages{background:linear-gradient(180deg,var(--bg) 0%,#182331 50%,var(--bg) 100%)}
+  .adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .adv{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px 28px;overflow:hidden;transition:transform .35s,border-color .35s,background .35s}
+  .adv:hover{transform:translateY(-8px);border-color:rgba(94,234,212,.42);background:rgba(255,255,255,.055)}
+  .adv-num{font-family:var(--font-d);font-weight:200;font-size:52px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.85;margin-bottom:18px}
+  .adv h3{font-size:17px;font-weight:800;margin-bottom:10px;line-height:1.35}
+  .adv p{font-size:13.8px;color:var(--muted)}
+  .adv::after{content:'';position:absolute;left:26px;bottom:0;width:0;height:2px;background:var(--grad);transition:width .45s}
+  .adv:hover::after{width:calc(100% - 52px)}
+
+  /* ---------- process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative}
+  .steps::before{content:'';position:absolute;top:57px;left:4%;right:4%;height:1px;background:linear-gradient(90deg,rgba(94,234,212,.5),rgba(56,189,248,.4),rgba(167,139,250,.5))}
+  .step{position:relative;text-align:left}
+  .step-day{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);background:rgba(94,234,212,.08);border:1px solid rgba(94,234,212,.35);border-radius:999px;padding:8px 16px;margin-bottom:18px}
+  .step-dot{width:13px;height:13px;border-radius:50%;background:var(--grad);margin-bottom:20px;box-shadow:0 0 0 5px rgba(94,234,212,.12),0 0 22px rgba(94,234,212,.55);position:relative;top:1px}
+  .step h3{font-size:17.5px;font-weight:800;margin-bottom:9px}
+  .step p{font-size:13.8px;color:var(--muted)}
+  .step:hover .step-day{background:rgba(94,234,212,.16)}
+
+  /* ---------- lead ---------- */
+  #lead{position:relative;overflow:hidden}
+  #lead::before{content:'';position:absolute;width:560px;height:560px;border-radius:50%;left:-220px;bottom:-260px;background:radial-gradient(circle,rgba(94,234,212,.14),transparent 65%);pointer-events:none}
+  #lead::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;right:-200px;top:-240px;background:radial-gradient(circle,rgba(167,139,250,.13),transparent 65%);pointer-events:none}
+  .lead-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:start;position:relative;z-index:1}
+  .lead-checks{display:flex;flex-direction:column;gap:14px;margin:30px 0 36px}
+  .lead-checks li{list-style:none;display:flex;gap:13px;align-items:flex-start;font-size:15px;color:var(--muted)}
+  .lead-checks li b{color:var(--text)}
+  .lead-checks svg{flex-shrink:0;color:var(--teal);margin-top:3px}
+  .soc-row{display:flex;flex-wrap:wrap;gap:14px}
+  .soc{display:inline-flex;align-items:center;gap:11px;font-weight:700;font-size:14px;color:#fff;padding:13px 22px;border-radius:14px;transition:transform .25s,box-shadow .25s,filter .25s}
+  .soc:hover{transform:translateY(-3px);filter:brightness(1.1)}
+  .soc svg{flex-shrink:0}
+  .soc-wa{background:var(--wa);box-shadow:0 10px 30px rgba(37,211,102,.28)}
+  .soc-tg{background:var(--tg);box-shadow:0 10px 30px rgba(42,171,238,.28)}
+  .soc-max{background:var(--max);box-shadow:0 10px 30px rgba(139,92,246,.32)}
+
+  .form-card{background:var(--panel-solid);border:1px solid var(--line);border-radius:26px;padding:38px 36px;position:relative}
+  .form-card::before{content:'';position:absolute;inset:0;border-radius:26px;padding:1px;background:linear-gradient(140deg,rgba(94,234,212,.45),transparent 35%,transparent 65%,rgba(167,139,250,.4));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .form-title{font-family:var(--font-d);font-weight:400;font-size:19px;margin-bottom:24px}
+  .field{margin-bottom:17px}
+  .field label{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .field input,.field select,.field textarea{
+    width:100%;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;font-family:inherit;font-size:15px;color:var(--text);outline:none;
+    transition:border-color .25s,box-shadow .25s,background .25s;
+  }
+  .field textarea{resize:vertical;min-height:92px}
+  .field input::placeholder,.field textarea::placeholder{color:#5F7186}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(94,234,212,.13);background:rgba(255,255,255,.06)}
+  .field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23A6B6C8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+  .field select option{background:#212F40;color:#EEF3F8}
+  .field.error input,.field.error select,.field.error textarea{border-color:var(--err);box-shadow:0 0 0 4px rgba(248,113,113,.12)}
+  .err-msg{display:none;font-size:12px;color:var(--err);margin-top:6px}
+  .field.error .err-msg{display:block}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-submit{width:100%;margin-top:8px;padding:17px;font-size:16px}
+  .form-note{font-size:12px;color:#6E8098;text-align:center;margin-top:14px}
+  .form-success{display:none;text-align:center;padding:34px 10px}
+  .form-success.show{display:block;animation:fadeUp .5s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .succ-ic{width:76px;height:76px;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(94,234,212,.18),rgba(56,189,248,.18));border:1px solid rgba(94,234,212,.5);color:var(--teal);box-shadow:0 0 40px rgba(94,234,212,.25)}
+  .form-success h4{font-family:var(--font-d);font-weight:400;font-size:19px;margin-bottom:12px}
+  .form-success p{color:var(--muted);font-size:14.5px;margin-bottom:24px}
+  .form-success .soc{padding:11px 18px;font-size:13px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);background:var(--bg2);padding:70px 0 0}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1.15fr;gap:48px;padding-bottom:54px}
+  .foot-about p{color:var(--muted);font-size:14px;margin-top:18px;max-width:340px}
+  .foot-h{font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:20px}
+  .foot-list{display:flex;flex-direction:column;gap:13px}
+  .foot-list a,.foot-list span{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--muted);transition:color .25s}
+  .foot-list a:hover{color:var(--teal)}
+  .foot-list svg{flex-shrink:0;color:var(--teal);margin-top:3px}
+  .foot-soc{display:flex;flex-direction:column;gap:11px}
+  .foot-soc .soc{justify-content:flex-start}
+  .foot-bottom{border-top:1px solid var(--line);padding:22px 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12.5px;color:#6E8098}
+
+  /* ---------- modal ---------- */
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
+  .modal.open{display:flex}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(11,17,25,.82);backdrop-filter:blur(10px);animation:fade .3s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal-dialog{position:relative;background:var(--panel-solid);border:1px solid var(--line);border-radius:24px;max-width:940px;width:100%;max-height:90vh;overflow:auto;display:grid;grid-template-columns:1.1fr 1fr;animation:zoom .35s ease}
+  @keyframes zoom{from{opacity:0;transform:scale(.94) translateY(14px)}to{opacity:1;transform:none}}
+  .modal-media{position:relative;min-height:320px}
+  .modal-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .modal-media .tag{top:18px;left:18px}
+  .modal-body{padding:38px 34px;display:flex;flex-direction:column;gap:14px}
+  .modal-body h3{font-family:var(--font-d);font-weight:400;font-size:20px;line-height:1.4;padding-right:30px}
+  .modal-body .mdesc{font-size:14.5px;color:var(--muted)}
+  .modal-body .mquote{font-family:var(--font-s);font-style:italic;font-size:15.5px;color:#C9D6E4;border-left:2px solid;border-image:linear-gradient(180deg,#5EEAD4,#A78BFA) 1;padding-left:15px}
+  .modal-close{position:absolute;top:16px;right:16px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(15,22,31,.75);color:#fff;display:grid;place-items:center;transition:.25s;backdrop-filter:blur(6px)}
+  .modal-close:hover{border-color:var(--teal);color:var(--teal);transform:rotate(90deg)}
+  .modal-cta{margin-top:auto;align-self:flex-start}
+
+  /* ---------- floating ---------- */
+  .float-wa{position:fixed;right:24px;bottom:24px;z-index:90;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;box-shadow:0 12px 34px rgba(37,211,102,.4);opacity:0;transform:translateY(20px);pointer-events:none;transition:.35s}
+  .float-wa.show{opacity:1;transform:none;pointer-events:auto}
+  .float-wa:hover{transform:translateY(-4px)}
+  .float-wa::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:ring 2s infinite}
+  @keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.55);opacity:0}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1100px){
+    .adv-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:20px}
+    .steps::before{display:none}
+    .step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+    .step-dot{display:none}
+  }
+  @media (max-width:1024px){
+    nav.main,.header-phone span,.header-cta{display:none}
+    .burger{display:block}
+  }
+  @media (max-width:960px){
+    .lead-grid{grid-template-columns:1fr;gap:44px}
+    .hero-inner{justify-content:flex-start}
+    .hero-overlay{background:linear-gradient(180deg,rgba(22,32,45,.6) 0%,rgba(22,32,45,.82) 55%,var(--bg) 100%)}
+    .hero-media img{object-position:30% center}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:860px){
+    .sec{padding:80px 0}
+    .cards{grid-template-columns:1fr}
+    .hero{padding:120px 0 70px}
+  }
+  @media (max-width:640px){
+    .adv-grid,.steps,.form-row,.foot-grid{grid-template-columns:1fr}
+    .form-card{padding:28px 22px}
+    .hero-cta .btn{width:100%}
+    .soc-row{flex-direction:column}
+    .soc{justify-content:center}
+    .modal-dialog{grid-template-columns:1fr}
+    .modal-media{min-height:240px;position:relative}
+    .modal-media img{position:relative;height:240px}
+    .header-cta{display:none}
+    .logo-text em{display:none}
+    h1{font-size:26px}
+  }
 </style>
 </head>
-<body class="noise">
-<!-- Header -->
-<header id="header" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300">
-  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
-    <div class="flex items-center gap-8">
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-[9px] bg-[#E8EEF2] text-[#141E2A] grid place-items-center font-bold text-[13px] tracking-[0.12em]">F</div>
-        <span class="serif text-[22px] tracking-[0.02em] font-medium leading-none">FORMA</span>
-        <span class="hidden md:inline text-[10px] tracking-[0.22em] text-[#8AA0B8] uppercase translate-y-[2px] ml-1">Ростов-на-Дону</span>
+<body>
+
+<!-- SVG defs -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <linearGradient id="lgA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5EEAD4"/><stop offset=".5" stop-color="#38BDF8"/><stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="container header-in">
+    <a class="logo" href="#top" aria-label="Мебель-К — на главную">
+      <svg viewBox="0 0 44 44" width="42" height="42" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="41" height="41" rx="12" fill="none" stroke="url(#lgA)" stroke-width="2"/>
+        <path d="M12 30V15l10 11 10-11v15" fill="none" stroke="url(#lgA)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель на заказ · Ростов-на-Дону</em></span>
+    </a>
+    <nav class="main" aria-label="Основная навигация">
+      <a href="#portfolio" data-nav="portfolio">Проекты</a>
+      <a href="#advantages" data-nav="advantages">Преимущества</a>
+      <a href="#process" data-nav="process">Как работаем</a>
+      <a href="#contacts" data-nav="contacts">Контакты</a>
+    </nav>
+    <div class="header-right">
+      <a class="header-phone" href="tel:+79010007331">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+7 (901) 000-73-31</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-7 text-[13px] tracking-[0.02em] text-[#9AB0C7]">
-        <a href="#portfolio" class="hover:text-white transition">Портфолио</a>
-        <a href="#why" class="hover:text-white transition">Почему мы</a>
-        <a href="#process" class="hover:text-white transition">Как работаем</a>
-      </nav>
-    </div>
-    <div class="flex items-center gap-3">
-      <a href="tel:+78633102244" class="hidden md:flex text-[13px] text-[#9AB0C7] hover:text-white transition">+7 901 000-73-31</a>
-      <button onclick="scrollToForm()" class="hidden md:inline-flex btn-primary h-9 px-5 rounded-full text-[13px] font-semibold tracking-[0.02em]">Рассчитать</button>
-      <button id="burger" class="lg:hidden w-9 h-9 rounded-full border border-[#26374D] grid place-items-center">
-        <span class="block w-4 h-[2px] bg-white mb-[4px]"></span>
-        <span class="block w-4 h-[2px] bg-white"></span>
-      </button>
-    </div>
-  </div>
-  <div id="mobMenu" class="lg:hidden hidden border-t border-[#233246] bg-[#141E2A]/95 backdrop-blur-xl">
-    <div class="px-6 py-6 flex flex-col gap-4 text-[15px]">
-      <a href="#portfolio" class="moblink">Портфолио</a>
-      <a href="#why" class="moblink">Почему мы</a>
-      <a href="#process" class="moblink">Как работаем</a>
-      <a href="#contact" class="moblink">Контакты</a>
-      <button onclick="scrollToForm()" class="btn-primary h-11 rounded-full font-semibold mt-2">Рассчитать стоимость</button>
+      <a class="btn btn-primary btn-sm header-cta" href="#lead">3D-проект за 48 ч</a>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="relative min-h-[92vh] flex items-center overflow-hidden">
-  <div class="absolute inset-0 bg-[#141E2A]"></div>
-  <div class="hero-visual">
-    <img id="heroImg" src="https://www.designarena.ai/u/d92642f3-67e5-4cdf-ad37-37482d990e44" alt="Кухня-остров с контурной подсветкой — проект , Ростов-на-Дону. Фасады эмаль soft-touch, остров из кварца, скрытая LED-подсветка">
+<!-- mobile menu -->
+<div class="mnav" id="mnav">
+  <a class="mlink" href="#portfolio">Проекты</a>
+  <a class="mlink" href="#advantages">Преимущества</a>
+  <a class="mlink" href="#process">Как работаем</a>
+  <a class="mlink" href="#lead">Заявка</a>
+  <a class="mlink" href="#contacts">Контакты</a>
+  <a class="mnav-phone" href="tel:+79010007331">+7 (901) 000-73-31</a>
+  <div class="mnav-soc">
+    <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+    <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+    <a class="soc soc-max" href="https://max.ru/u/f9LHodD0cOIOdwOTrcJ1S3gwxxsyjj9R6tX2bw0PO-3xGs4-q1DjfRZB45c" target="_blank" rel="noopener" aria-label="Max"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V6.5L12 14l7-7.5V19"/></svg></a>
   </div>
-  <!-- gradient for readability on mobile -->
-  <div class="absolute inset-0 md:hidden bg-gradient-to-t from-[#141E2A] via-[#141E2A]/70 to-transparent z-[1] pointer-events-none"></div>
+</div>
 
-  <div class="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8 w-full pt-24 pb-10 md:py-0">
-    <div class="max-w-[640px]">
-      <div class="reveal in flex items-center gap-3 mb-6">
-        <span class="inline-flex items-center gap-2 text-[10px] tracking-[0.22em] uppercase text-[#8AA0B8] border border-[#26374D] rounded-full px-3 py-1.5 bg-[#1A2A3B]/60 backdrop-blur">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#6ED3C8] animate-pulse"></span> Цех в Ростовской области • 25 дней • Монтаж за 2-5 дней
-        </span>
-      </div>
-
-      <h1 class="reveal in serif text-[44px] md:text-[66px] leading-[0.92] tracking-[-0.02em] font-[500]">
-        Кухни, в которых<br>
-        <span class="text-[#6ED3C8] font-[400] italic">хочется жить.</span><br>
-        Офисы, в которых<br>
-        хочется работать.
-      </h1>
-
-      <p class="reveal in mt-6 text-[16px] md:text-[18px] leading-[1.55] text-[#A8BDD4] max-w-[520px]">
-        Проектируем и производим мебель на заказ в Ростове-на-Дону и области. Без шаблонов. Под ваш рост, ритм и пространство. ЧПУ-точность, фасады Fenix и AGT, фурнитура Blum.
-      </p>
-
-      <div class="reveal in mt-8 flex flex-wrap gap-3">
-        <button onclick="scrollToForm()" class="btn-primary h-[48px] px-7 rounded-full text-[14px] font-semibold tracking-[0.02em] inline-flex items-center gap-2 shimmer">
-          Получить 3D-проект за 48 часов
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})" class="btn-ghost h-[48px] px-7 rounded-full text-[14px] font-medium text-[#C6D5E5]">Смотреть работы</button>
-      </div>
-
-      <div class="reveal in mt-8 grid grid-cols-1 gap-3 max-w-[520px]">
-        <div class="flex gap-3 items-start text-[13.5px] leading-[1.5] text-[#B9CADB]">
-          <span class="mt-[7px] w-5 h-[1px] bg-[#6ED3C8] shrink-0"></span>
-          <span><b class="text-white font-semibold">Замер + 3D-визуализация — 0₽</b> при заказе. Приезжаем со всеми образцами.</span>
-        </div>
-        <div class="flex gap-3 items-start text-[13.5px] leading-[1.5] text-[#B9CADB]">
-          <span class="mt-[7px] w-5 h-[1px] bg-[#6ED3C8] shrink-0"></span>
-          <span><b class="text-white font-semibold">ЧПУ до 0,1 мм.</b> Зазоры как в немецком авто. Фасады не боятся влаги и детских художеств.</span>
-        </div>
-        <div class="flex gap-3 items-start text-[13.5px] leading-[1.5] text-[#B9CADB]">
-          <span class="mt-[7px] w-5 h-[1px] bg-[#6ED3C8] shrink-0"></span>
-          <span><b class="text-white font-semibold">Монтаж за 2-5 дней</b> без пыли. С пылесосом, лазерным уровнем и уборкой после.</span>
-        </div>
-      </div>
-
-      <div class="reveal in mt-10 flex items-center gap-4 text-[11px] tracking-[0.08em] text-[#6B839C]">
-        <div class="flex -space-x-2">
-          <img src="https://i.pravatar.cc/32?img=5" class="w-7 h-7 rounded-full border border-[#141E2A] object-cover">
-          <img src="https://i.pravatar.cc/32?img=32" class="w-7 h-7 rounded-full border border-[#141E2A] object-cover">
-          <img src="https://i.pravatar.cc/32?img=12" class="w-7 h-7 rounded-full border border-[#141E2A] object-cover">
-        </div>
-        <span>42 проекта в 2025 • ЖК Вересаево, Левенцовка, Красный Аксай, Суворовский</span>
-      </div>
-    </div>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-media" id="heroMedia">
+    <img src="https://www.designarena.ai/u/59a3d959-8f89-42c3-81f3-91f58dd56b4d" alt="Современная кухня с бирюзовыми фасадами и LED-подсветкой — производство Мебель-К" onerror="document.getElementById('heroMedia').classList.add('no-img')">
   </div>
-
-  <div class="absolute bottom-6 right-[54%] md:right-[48%] z-20 hidden md:flex items-center gap-2 text-[10px] tracking-[0.18em] uppercase text-[#5A708A]">
-    <span class="w-10 h-[1px] bg-[#2A3C52]"></span> На фото: кухня-остров «Мятный свет», 19 м², эмаль + кварц
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio" class="relative border-t border-[#1E2D3D] bg-[#182636]">
-  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
-      <div>
-        <div class="text-[11px] tracking-[0.24em] uppercase text-[#6ED3C8] mb-3">Портфолио / 2023—2025</div>
-        <h2 class="serif text-[36px] md:text-[48px] leading-[0.95] tracking-[-0.02em]">Работы, которые говорят<br>сами за себя</h2>
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="hero-badge"><i></i>Мебель на заказ · с 2008 года · Ростов-на-Дону и область</span>
+      <h1>Кухни, в которых хочется <span class="serif">готовить.</span><br>Офисы, в которых хочется <span class="serif">работать</span></h1>
+      <p class="hero-sub">Проектируем и производим мебель на заказ в Ростове-на-Дону и области. <b>Без шаблонов.</b> Под ваш рост, ритм и пространство. ЧПУ-точность, фасады AGT и Evogloss, фурнитура Blum.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#lead">Получить 3D-проект за 48 часов
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#portfolio">Смотреть проекты</a>
       </div>
-      <div class="flex gap-2 p-1 rounded-full bg-[#141E2A] border border-[#233246]">
-        <button data-filter="all" class="filter-btn active px-4 h-8 rounded-full text-[13px] bg-white text-[#141E2A] font-semibold">Все</button>
-        <button data-filter="kitchen" class="filter-btn px-4 h-8 rounded-full text-[13px] text-[#8AA0B8] hover:text-white">Кухни</button>
-        <button data-filter="office" class="filter-btn px-4 h-8 rounded-full text-[13px] text-[#8AA0B8] hover:text-white">Офисы</button>
-      </div>
-    </div>
-
-    <div id="portfolioGrid" class="grid md:grid-cols-2 gap-[18px]">
-      <!-- Card 1 -->
-      <article data-type="kitchen" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#233246] bg-[#1E2D3D] card-hover cursor-pointer">
-        <div class="aspect-[4/2.9] overflow-hidden relative">
-          <img src="https://clck.ru/3VttvV" alt="Кухня минимализм ЖК Вересаево" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] tracking-[0.08em] text-white border border-white/10">ЖК Вересаево • 84 м²</span>
-            <span class="px-3 py-1 rounded-full bg-[#6ED3C8] text-[11px] font-semibold text-[#0E1722]">Кухня</span>
-          </div>
+      <div class="hero-points">
+        <div class="hpoint reveal">
+          <span class="hpoint-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+          <p><strong>Замер + 3D-визуализация — 0 ₽ при заказе.</strong>Приезжаем со всеми образцами.</p>
         </div>
-        <div class="p-6 md:p-7">
-          <h3 class="serif text-[24px] leading-[1.1]">Кухня в стиле минимализм для ЖК Вересаево</h3>
-          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Моно-кухня без верхних ручек. Светлая современная кухня с матовыми серо-бежевыми фасадами, каменной столешницей с мраморным рисунком, островом, встроенной техникой и мягкой LED-подсветкой нично сочетаются с выразительной фактурой темного фартука и натуральным оттенком дерева. Лаконичная композиция без лишних деталей делает кухню визуально легкой, сохраняя максимум функциональности и комфорта.</p>
-          <div class="mt-5 flex flex-wrap gap-2 text-[11px] tracking-[0.04em] text-[#8AA0B8]">
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">AGT • Egger • Avant Quartz</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Blum Legrabox / Aventos HF</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">25 дней</span>
-          </div>
+        <div class="hpoint reveal">
+          <span class="hpoint-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="1.6"/></svg></span>
+          <p><strong>ЧПУ до 0,1 мм.</strong>Зазоры как в немецком авто. Фасады не боятся влаги и детских художеств.</p>
         </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article data-type="office" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#233246] bg-[#1E2D3D] card-hover cursor-pointer">
-        <div class="aspect-[4/2.9] overflow-hidden relative">
-          <img src="https://clck.ru/3VttrX" alt="Офис БЦ Гвардейский" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] text-white border border-white/10">БЦ Гвардейский • 60 м²</span>
-            <span class="px-3 py-1 rounded-full bg-white text-[11px] font-semibold text-[#141E2A]">Офис</span>
-          </div>
-        </div>
-        <div class="p-6 md:p-7">
-          <h3 class="serif text-[24px] leading-[1.1]">Современная мебель для офиса в класическом стиле. БЦ Гвардейский</h3>
-          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Светлый современный офис с панорамными окнами, открытой планировкой и несколькими рабочими зонами. В интерьере — офисные столы и тумбы из натурального дерева тёплого орехового оттенка, эргономичные белые кресла, встроенные стеллажи и шкафы для хранения документов и книг. Премиальная офисная атмосфера. ёплая фактура древесины гармонично сочетается с белыми эргономичными креслами и холодными оттенками камня, создавая современную и спокойную рабочую атмосферу. Продуманная система столов, тумб и стеллажей обеспечивает комфортную организацию пространства, а лаконичные формы подчёркивают элегантный минималистичный стиль офиса.</p>
-          <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-[#8AA0B8]">
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Дерево</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Hettich</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">25 дней</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 (uses provided image) -->
-      <article data-type="kitchen" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#2A3D54] bg-[#1E2D3D] card-hover cursor-pointer ring-1 ring-[#6ED3C8]/20">
-        <div class="aspect-[4/2.9] overflow-hidden relative">
-          <img src="https://clck.ru/3VttiA" alt="Бирюзовый цвет ЖК Красный Аксай" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#141E2A]/30 to-transparent"></div>
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] text-white border border-white/10">ЖК Красный Аксай • 19 м²</span>
-            <span class="px-3 py-1 rounded-full bg-[#6ED3C8] text-[11px] font-semibold text-[#0E1722]">Хит</span>
-          </div>
-        </div>
-        <div class="p-6 md:p-7">
-          <h3 class="serif text-[24px] leading-[1.1]">Кухня в стиле Прованс</h3>
-          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Уютная угловая кухня с фасадами из окрашенного МДФ насыщенного бирюзового оттенка, декоративной фрезеровкой и стеклянными вставками, светлая столешница, открытые полки, встроенная техника и остров-барная стойка. Фартук из декоративной плитки с орнаментом, деревянные и керамические детали, естественный дневной свет. Выразительные бирюзовые фасады и винтажная плитка создают атмосферу теплого загородного дома. Светлая столешница, удобный остров и продуманное хранение объединяют декоративность с комфортом, а натуральные фактуры добавляют интерьеру уюта.</p>
-          <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-[#8AA0B8]">
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Эмаль • Neomarm</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Blum</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">25 дней</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article data-type="kitchen" class="portfolio-card group relative rounded-[24px] overflow-hidden border border-[#233246] bg-[#1E2D3D] card-hover cursor-pointer">
-        <div class="aspect-[4/2.9] overflow-hidden relative">
-          <img src="https://clck.ru/3VtvNU" alt="Кухня Суворовский" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-[1200ms]">
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full bg-[#141E2A]/80 backdrop-blur text-[11px] text-white border border-white/10">Суворовский • 27 м² • Семья</span>
-            <span class="px-3 py-1 rounded-full bg-white/90 text-[11px] font-semibold text-[#141E2A]">Кухня</span>
-          </div>
-        </div>
-        <div class="p-6 md:p-7">
-          <h3 class="serif text-[24px] leading-[1.1]">Кухня для семьи</h3>
-          <p class="mt-3 text-[14px] leading-[1.6] text-[#A8BDD4]">Элегантная кухня в классическом стиле с изысканными фасадами, декоративной резьбой и благородной светлой цветовой гаммой. Продуманная композиция сочетает выразительный декор с функциональностью, создавая гармоничное и уютное пространство для дома..</p>
-          <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-[#8AA0B8]">
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">AGT • Egger</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">Blum • Kessebohmer</span>
-            <span class="px-2.5 py-1 rounded-full bg-[#141E2A] border border-[#233246]">25 дней</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section id="why" class="relative bg-[#141E2A] border-t border-[#1E2D3D]">
-  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
-    <div class="grid lg:grid-cols-[380px_1fr] gap-10 lg:gap-16">
-      <div class="reveal">
-        <div class="text-[11px] tracking-[0.24em] uppercase text-[#6ED3C8] mb-4">Почему Мебель-К</div>
-        <h2 class="serif text-[38px] md:text-[44px] leading-[0.95]">Делаем как для себя.<br>Поэтому — на совесть.</h2>
-        <p class="mt-5 text-[14.5px] leading-[1.7] text-[#8AA0B8]">Без «итальянских» пленок из соседнего гаража. Только то, за что не стыдно через 5 лет.</p>
-        <div class="mt-8 p-4 rounded-[16px] bg-[#182636] border border-[#233246] flex gap-3 items-center">
-          <div class="w-10 h-10 rounded-full bg-[#6ED3C8]/15 grid place-items-center text-[#6ED3C8]">✓</div>
-          <div class="text-[13px] leading-[1.5] text-[#B9CADB]"><b class="text-white">Гарантия 10 лет</b> — прописана в договоре. Сервис после — бесплатно.</div>
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-[14px]">
-        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7">
-          <div class="w-9 h-9 rounded-full bg-white text-[#141E2A] grid place-items-center text-[14px] font-bold">01</div>
-          <h4 class="mt-5 font-semibold text-[16px]">ЧПУ-точность до 0,1 мм</h4>
-          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Пилим на Biesse Rover. Кромка PUR — не отклеится от пара. Зазоры 1 мм, как у Blum в каталоге.</p>
-          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Biesse • PUR • Лазерный уровень</div>
-        </div>
-        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7" style="transition-delay:.08s">
-          <div class="w-9 h-9 rounded-full bg-white text-[#141E2A] grid place-items-center text-[14px] font-bold">02</div>
-          <h4 class="mt-5 font-semibold text-[16px]">Честные материалы</h4>
-          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">AGT, Evogloss, Egger, Ивацевич, Ламарти. Кварц и акрил — с сертификатами. Покажем на месте, дадим пощупать.</p>
-          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Evogloss • AGT Supramat • Egger</div>
-        </div>
-        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7" style="transition-delay:.16s">
-          <div class="w-9 h-9 rounded-full bg-[#6ED3C8] text-[#0E1722] grid place-items-center text-[14px] font-bold">03</div>
-          <h4 class="mt-5 font-semibold text-[16px]">Замер</h4>
-          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Приезжаем и замеряем. Учитываем завал стен до 2 мм, выводы воды и розетки. Ошибок — ноль.</p>
-          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Leica  • 2 часа на объекте</div>
-        </div>
-        <div class="reveal rounded-[20px] bg-[#1B2A3A] border border-[#233246] p-7" style="transition-delay:.24s">
-          <div class="w-9 h-9 rounded-full bg-white text-[#141E2A] grid place-items-center text-[14px] font-bold">04</div>
-          <h4 class="mt-5 font-semibold text-[16px]">Без сюрпризов в смете</h4>
-          <p class="mt-2 text-[13.5px] leading-[1.6] text-[#8AA0B8]">Цена в договоре — финальная. Без «извините, забыли посчитать ручки». 70% — предоплата, 30% — после монтажа.</p>
-          <div class="mt-5 text-[11px] tracking-[0.08em] text-[#6B839C]">Договор • Фикс-цена</div>
+        <div class="hpoint reveal">
+          <span class="hpoint-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <p><strong>Монтаж за 2–5 дней без пыли.</strong>С пылесосом, лазерным уровнем и уборкой после.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process" class="relative bg-[#182636] border-y border-[#233246]">
-  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
-    <div class="flex flex-wrap justify-between items-end gap-6 mb-12">
-      <h2 class="reveal serif text-[36px] md:text-[46px] leading-[0.95]">От заявки до монтажа —<br>30 дней и 4 шага</h2>
-      <p class="reveal text-[13.5px] leading-[1.6] text-[#8AA0B8] max-w-[360px]">Вы не бегаете по салонам. Мы приезжаем, считаем, делаем. Вы только выбираете ручки.</p>
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="mq-group">
+      <span>AGT</span><i>◆</i><span>EVOGLOSS</span><i>◆</i><span>EGGER</span><i>◆</i><span>BLUM</span><i>◆</i><span>BIESSE ROVER</span><i>◆</i><span>ИВАЦЕВИЧ</span><i>◆</i><span>ЛАМАРТИ</span><i>◆</i><span>ЧПУ 0,1 ММ</span><i>◆</i><span>КРОМКА PUR</span><i>◆</i>
     </div>
-
-    <div class="relative grid md:grid-cols-4 gap-[14px]">
-      <div class="hidden md:block absolute top-[32px] left-[12%] right-[12%] h-[1px] bg-gradient-to-r from-[#233246] via-[#2E4A5E] to-[#233246]"></div>
-
-      <div class="reveal relative rounded-[20px] bg-[#141E2A] border border-[#233246] p-7">
-        <div class="w-8 h-8 rounded-full bg-[#E8EEF2] text-[#141E2A] grid place-items-center text-[12px] font-bold">1</div>
-        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 1</div>
-        <h4 class="mt-2 font-semibold text-[16px]">Заявка и замер</h4>
-        <p class="mt-2 text-[13px] leading-[1.6] text-[#8AA0B8]">Выезд в день обращения по Ростову и области. Замер, обсуждение быта, черновые идеи на месте.</p>
-        <div class="mt-4 text-[11px] text-[#5A708A]">Бесплатно • 120 минут</div>
-      </div>
-      <div class="reveal relative rounded-[20px] bg-[#141E2A] border border-[#233246] p-7" style="transition-delay:.08s">
-        <div class="w-8 h-8 rounded-full bg-[#E8EEF2] text-[#141E2A] grid place-items-center text-[12px] font-bold">2</div>
-        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 2–3</div>
-        <h4 class="mt-2 font-semibold text-[16px]">3D-проект и смета</h4>
-        <p class="mt-2 text-[13px] leading-[1.6] text-[#8AA0B8]">Фотореалистичная визуализация + точная смета без скрытых доплат. 2 правки — включены.</p>
-        <div class="mt-4 text-[11px] text-[#5A708A]">3 ракурса • Спецификация</div>
-      </div>
-      <div class="reveal relative rounded-[20px] bg-[#141E2A] border border-[#233246] p-7" style="transition-delay:.16s">
-        <div class="w-8 h-8 rounded-full bg-[#6ED3C8] text-[#0E1722] grid place-items-center text-[12px] font-bold">3</div>
-        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 4–25</div>
-        <h4 class="mt-2 font-semibold text-[16px]">Производство</h4>
-        <p class="mt-2 text-[13px] leading-[1.6] text-[#8AA0B8]">ЧПУ-раскрой, кромка PUR, сборка на шканты. Фото-отчет по запросу.</p>
-        <div class="mt-4 text-[11px] text-[#5A708A]">Цех в Ростовской области, Мясниковский район>/div>
-      </div>
-      <div class="reveal relative rounded-[20px] bg-[#1E2D3D] border border-[#6ED3C8]/30 p-7" style="transition-delay:.24s">
-        <div class="w-8 h-8 rounded-full bg-white text-[#141E2A] grid place-items-center text-[12px] font-bold">4</div>
-        <div class="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8]">День 26-30</div>
-        <h4 class="mt-2 font-semibold text-[16px]">Доставка и монтаж</h4>
-        <p class="mt-2 text-[13px] leading-[1.6] text-[#A8BDD4]">Привезем, поднимем, соберем за 2-5 дней. Подключим технику, уберем мусор. Сдаем с уровнем.</p>
-        <div class="mt-4 text-[11px] text-[#5A708A]">Без пыли • Уборка включена</div>
-      </div>
+    <div class="mq-group">
+      <span>AGT</span><i>◆</i><span>EVOGLOSS</span><i>◆</i><span>EGGER</span><i>◆</i><span>BLUM</span><i>◆</i><span>BIESSE ROVER</span><i>◆</i><span>ИВАЦЕВИЧ</span><i>◆</i><span>ЛАМАРТИ</span><i>◆</i><span>ЧПУ 0,1 ММ</span><i>◆</i><span>КРОМКА PUR</span><i>◆</i>
     </div>
   </div>
-</section>
+</div>
 
-<!-- FINAL CTA -->
-<section id="contact" class="relative bg-[#141E2A]">
-  <div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-[72px] md:py-[96px]">
-    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-12 items-start">
-      <div class="reveal">
-        <div class="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-[#6ED3C8] border border-[#233246] rounded-full px-3 py-1.5 bg-[#182636]">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#6ED3C8]"></span> Отвечает технолог, а не менеджер
+<!-- ================= PORTFOLIO ================= -->
+<section class="sec" id="portfolio">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Портфолио</span>
+      <h2>Избранные <span class="serif">проекты</span></h2>
+      <p class="sec-sub">Кухни и офисные пространства, которые мы спроектировали, произвели и собрали под ключ — от первого замера до финальной уборки.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card reveal">
+        <div class="card-media">
+          <img src="https://i.postimg.cc/2SQNM7DL/designarena-image-5w4nu3jt.png" alt="Кухня в стиле минимализм для ЖК Вересаево" loading="lazy">
+          <span class="tag">Кухня</span>
         </div>
-        <h2 class="serif mt-6 text-[38px] md:text-[52px] leading-[0.92] tracking-[-0.02em]">Рассчитаем стоимость<br>вашего проекта за 2 часа</h2>
-        <p class="mt-5 text-[15px] leading-[1.6] text-[#A8BDD4] max-w-[520px]">Отправьте размеры или планировку — пришлем 3 варианта сметы в WhatsApp / Telegram/Макс. Без навязчивых звонков. Среднее время ответа — 15 минут.</p>
-
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[520px]">
-          <div class="rounded-[14px] bg-[#182636] border border-[#233246] p-4 flex gap-3">
-            <div class="w-9 h-9 rounded-full bg-[#1E2D3D] grid place-items-center text-[#6ED3C8]">✦</div>
-            <div class="text-[13px] leading-[1.5]"><b class="text-white">3 варианта сметы</b><br><span class="text-[#8AA0B8]">Эконом / Оптимум / Премиум</span></div>
-          </div>
-          <div class="rounded-[14px] bg-[#182636] border border-[#233246] p-4 flex gap-3">
-            <div class="w-9 h-9 rounded-full bg-[#1E2D3D] grid place-items-center text-[#6ED3C8]">◐</div>
-            <div class="text-[13px] leading-[1.5]"><b class="text-white">3D-визуализация</b><br><span class="text-[#8AA0B8]">В подарок при заказе</span></div>
-          </div>
-        </div>
-
-        <div class="mt-10 hidden lg:flex items-center gap-6 text-[13px] text-[#8AA0B8]">
-          <div class="flex items-center gap-2"><span class="w-6 h-[1px] bg-[#2A3C52]"></span> Цех: Ростовская область, Мясниковский район,с. Чалтырь, ул. Сарьяна, дом 26</div>
-          <div>Пн-Сб 9:00–19:00</div>
-        </div>
-      </div>
-
-      <div class="reveal rounded-[24px] bg-[#1B2A3A] border border-[#233246] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
-        <form id="leadForm" class="space-y-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Имя</label>
-              <input name="name" required placeholder="Как к вам обращаться" class="input mt-1.5 w-full h-11 rounded-full px-4 text-[14px]">
-            </div>
-            <div>
-              <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Телефон *</label>
-              <input name="phone" required type="tel" placeholder="+7 900 000-00-00" class="input mt-1.5 w-full h-11 rounded-full px-4 text-[14px]">
-            </div>
-          </div>
-
-          <div>
-            <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Что делаем?</label>
-            <div class="mt-1.5 grid grid-cols-3 gap-2">
-              <label class="cursor-pointer"><input type="radio" name="type" value="Кухня" checked class="peer sr-only"><div class="h-10 rounded-full border border-[#2A3C52] peer-checked:bg-white peer-checked:text-[#141E2A] peer-checked:border-white grid place-items-center text-[13px] transition">Кухня</div></label>
-              <label class="cursor-pointer"><input type="radio" name="type" value="Офис" class="peer sr-only"><div class="h-10 rounded-full border border-[#2A3C52] peer-checked:bg-white peer-checked:text-[#141E2A] peer-checked:border-white grid place-items-center text-[13px] transition">Офис</div></label>
-              <label class="cursor-pointer"><input type="radio" name="type" value="Гардеробная" class="peer sr-only"><div class="h-10 rounded-full border border-[#2A3C52] peer-checked:bg-white peer-checked:text-[#141E2A] peer-checked:border-white grid place-items-center text-[13px] transition">Другое</div></label>
-            </div>
-          </div>
-
-          <div>
-            <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Размеры / Площадь</label>
-            <input name="size" placeholder="Напр. 3.2м прямая, потолок 2.7м, ЖК Вересаево" class="input mt-1.5 w-full h-11 rounded-full px-4 text-[14px]">
-          </div>
-
-          <div>
-            <label class="text-[11px] tracking-[0.12em] uppercase text-[#8AA0B8]">Комментарий</label>
-            <textarea name="comment" rows="3" placeholder="Что важно: техника, количество хранения, бюджет..." class="input mt-1.5 w-full rounded-[16px] px-4 py-3 text-[14px] resize-none"></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary w-full h-[48px] rounded-full text-[14px] font-semibold tracking-[0.02em] flex items-center justify-center gap-2">
-            Получить расчет за 2 часа
-            <span class="w-5 h-5 rounded-full bg-[#141E2A] text-white grid place-items-center text-[12px]">→</span>
+        <div class="card-body">
+          <h3>Кухня в стиле минимализм для ЖК «Вересаево»</h3>
+          <p class="card-desc">Моно-кухня без верхних ручек. Светлая современная кухня с матовыми серо-бежевыми фасадами, каменной столешницей с мраморным рисунком, островом, встроенной техникой и мягкой LED-подсветкой.</p>
+          <p class="card-quote">Лаконичная композиция без лишних деталей делает кухню визуально лёгкой, сохраняя максимум функциональности и комфорта.</p>
+          <button class="card-more" data-project="p1">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
+        </div>
+      </article>
 
-          <div class="flex items-start gap-2 text-[11px] leading-[1.4] text-[#6B839C] pt-1">
-            <input type="checkbox" checked class="mt-[2px] accent-[#6ED3C8]">
-            <span>Согласен на обработку данных. Не спамим, только по проекту. <a href="#" class="underline hover:text-white">Политика</a></span>
+      <article class="card reveal">
+        <div class="card-media">
+          <img src="https://i.postimg.cc/wxRqFJ1z/Whats-App-Image-2026-09-17-at-16-55-12.jpg" alt="Современная мебель для офиса в классическом стиле, БЦ Гвардейский" loading="lazy">
+          <span class="tag">Офис</span>
+        </div>
+        <div class="card-body">
+          <h3>Современная мебель для офиса в классическом стиле. БЦ «Гвардейский»</h3>
+          <p class="card-desc">Светлый современный офис с панорамными окнами, открытой планировкой и несколькими рабочими зонами. Офисные столы и тумбы из натурального дерева тёплого орехового оттенка, эргономичные белые кресла, встроенные стеллажи и шкафы.</p>
+          <p class="card-quote">Премиальная офисная атмосфера: тёплая фактура древесины гармонично сочетается с белыми эргономичными креслами и холодными оттенками камня.</p>
+          <button class="card-more" data-project="p2">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-media">
+          <img src="https://i.postimg.cc/8CnGmPGZ/designarena-image-agk3zyfa.png" alt="Кухня в стиле прованс с бирюзовыми фасадами" loading="lazy">
+          <span class="tag">Кухня</span>
+        </div>
+        <div class="card-body">
+          <h3>Кухня в стиле прованс</h3>
+          <p class="card-desc">Уютная угловая кухня с фасадами из окрашенного МДФ насыщенного бирюзового оттенка, декоративной фрезеровкой и стеклянными вставками, светлая столешница, открытые полки, встроенная техника и остров-барная стойка. Фартук из декоративной плитки с орнаментом.</p>
+          <p class="card-quote">Выразительные бирюзовые фасады и винтажная плитка создают атмосферу тёплого загородного дома.</p>
+          <button class="card-more" data-project="p3">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-media">
+          <img src="https://i.postimg.cc/8CsQcQvb/designarena-image-v8egivec.png" alt="Кухня для семьи в классическом стиле" loading="lazy">
+          <span class="tag">Кухня</span>
+        </div>
+        <div class="card-body">
+          <h3>Кухня для семьи в классическом стиле</h3>
+          <p class="card-desc">Элегантная кухня в классическом стиле с изысканными фасадами, декоративной резьбой и благородной светлой цветовой гаммой.</p>
+          <p class="card-quote">Продуманная композиция сочетает выразительный декор с функциональностью, создавая гармоничное и уютное пространство для дома.</p>
+          <button class="card-more" data-project="p4">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADVANTAGES ================= -->
+<section class="sec" id="advantages">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Почему Мебель-К</span>
+      <h2>Делаем как для себя.<br>Поэтому — <span class="serif">на совесть.</span></h2>
+      <p class="sec-sub">Без «итальянских» плёнок из соседнего гаража. Только то, за что не стыдно через 5–10 лет.</p>
+    </div>
+    <div class="adv-grid">
+      <div class="adv reveal">
+        <div class="adv-num">01</div>
+        <h3>ЧПУ-точность до 0,1 мм</h3>
+        <p>Пилим на Biesse Rover. Кромка PUR — не отклеится от пара. Зазоры 1 мм, как у Blum в каталоге.</p>
+      </div>
+      <div class="adv reveal">
+        <div class="adv-num">02</div>
+        <h3>Честные материалы</h3>
+        <p>AGT, Evogloss, Egger, Ивацевич, Ламарти. Кварц и акрил — с сертификатами. Покажем на месте, дадим пощупать.</p>
+      </div>
+      <div class="adv reveal">
+        <div class="adv-num">03</div>
+        <h3>Замер без погрешностей</h3>
+        <p>Приезжаем и замеряем. Учитываем завал стен до 2 мм, выводы воды и розетки. Ошибок — ноль.</p>
+      </div>
+      <div class="adv reveal">
+        <div class="adv-num">04</div>
+        <h3>Без сюрпризов в смете</h3>
+        <p>Цена в договоре — финальная. Без «извините, забыли посчитать ручки». 70% — предоплата, 30% — после монтажа.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="sec" id="process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Порядок работы</span>
+      <h2>От заявки до монтажа —<br><span class="serif">30 дней</span> и 4 шага</h2>
+      <p class="sec-sub">От заявки и 3D-проекта до монтажа. Понятно, прозрачно, с фото-отчётами на каждом этапе.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step-day">День 1</span>
+        <span class="step-dot"></span>
+        <h3>Заявка и замер</h3>
+        <p>Выезд в день обращения по Ростову и области. Замер, обсуждение быта, черновые идеи на месте.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-day">День 2–3</span>
+        <span class="step-dot"></span>
+        <h3>3D-проект и смета</h3>
+        <p>Фотореалистичная визуализация + точная смета без скрытых доплат. 2 правки — включены.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-day">День 4–25</span>
+        <span class="step-dot"></span>
+        <h3>Производство</h3>
+        <p>ЧПУ-раскрой, кромка PUR, сборка на шканты. Фото-отчёт по запросу.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-day">День 26–30</span>
+        <span class="step-dot"></span>
+        <h3>Доставка и монтаж</h3>
+        <p>Привезём, поднимем, соберём за 2–5 дней. Подключим технику, уберём мусор. Сдаём с уровнем.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEAD FORM ================= -->
+<section class="sec" id="lead">
+  <div class="container lead-grid">
+    <div class="reveal">
+      <span class="sec-eyebrow">Заявка</span>
+      <h2>Рассчитаем стоимость вашего проекта <span class="serif">за 2 часа.</span></h2>
+      <p class="sec-sub">Отправьте размеры или планировку — пришлём 3 варианта сметы в WhatsApp / Telegram / Max. Без навязчивых звонков. Среднее время ответа — 15 минут.</p>
+      <ul class="lead-checks">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>3 варианта сметы</b> — под разный бюджет и комплектацию</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>Замер и 3D-визуализация — 0 ₽</b> при заказе мебели</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><b>Выезд по Ростову и области</b> — в день обращения</span></li>
+      </ul>
+      <div class="soc-row">
+        <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Написать в WhatsApp
+        </a>
+        <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Написать в Telegram
+        </a>
+        <a class="soc soc-max" href="https://max.ru/u/f9LHodD0cOIOdwOTrcJ1S3gwxxsyjj9R6tX2bw0PO-3xGs4-q1DjfRZB45c" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V6.5L12 14l7-7.5V19"/></svg>
+          Написать в Max
+        </a>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <form id="leadForm" action="mailto:MebelK-61@yandex.ru" method="POST" enctype="text/plain" novalidate>
+        <div class="form-title">Получить расчёт за 2 часа</div>
+        <div class="form-row">
+          <div class="field" id="f-name">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="Как к вам обращаться" autocomplete="name">
+            <span class="err-msg">Пожалуйста, укажите имя</span>
           </div>
-        </form>
+          <div class="field" id="f-phone">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel">
+            <span class="err-msg">Введите корректный номер телефона</span>
+          </div>
+        </div>
+        <div class="field" id="f-type">
+          <label for="ptype">Что делаем</label>
+          <select id="ptype" name="ptype">
+            <option value="" selected disabled>Выберите вариант</option>
+            <option value="Кухня на заказ">Кухня на заказ</option>
+            <option value="Мебель для офиса">Мебель для офиса</option>
+            <option value="Другое">Другое</option>
+          </select>
+          <span class="err-msg">Выберите тип проекта</span>
+        </div>
+        <div class="field" id="f-size">
+          <label for="psize">Размеры / площадь</label>
+          <input type="text" id="psize" name="psize" placeholder="Например: 3,2 × 4,5 м или 14 м²">
+          <span class="err-msg">Подскажите хотя бы примерные размеры</span>
+        </div>
+        <div class="field" id="f-comment">
+          <label for="pcomment">Комментарии</label>
+          <textarea id="pcomment" name="pcomment" placeholder="Пожелания, стиль, сроки, ссылки на планировку…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Рассчитать стоимость</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Ответим в течение 2 часов — обычно за 15 минут.</p>
+      </form>
 
-        <div class="mt-6 flex items-center gap-3 text-[12px] text-[#8AA0B8]">
-          <img src="https://i.pravatar.cc/32?img=15" class="w-7 h-7 rounded-full">
-          <span><b class="text-white">Алексей</b>, технолог Мебель-К, ответит в Telegram в течение 17 минут</span>
-          <span class="ml-auto w-2 h-2 rounded-full bg-[#35D07F]"></span>
+      <div class="form-success" id="formSuccess">
+        <div class="succ-ic">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h4>Спасибо! Заявка принята, мы свяжемся с вами в течение 15 минут</h4>
+        <p>Мы открыли ваше почтовое приложение с готовым письмом — просто нажмите «Отправить». Если письмо не создалось автоматически, напишите нам напрямую:</p>
+        <div class="soc-row" style="justify-content:center">
+          <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener">Telegram</a>
+          <a class="soc soc-max" href="https://max.ru/u/f9LHodD0cOIOdwOTrcJ1S3gwxxsyjj9R6tX2bw0PO-3xGs4-q1DjfRZB45c" target="_blank" rel="noopener">Max</a>
         </div>
       </div>
     </div>
   </div>
-
-  <footer class="border-t border-[#1E2D3D]">
-    <div class="max-w-[1280px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between text-[12px] text-[#5A708A]">
-      <div class="flex items-center gap-6">
-        <span class="serif text-[18px] text-[#E8EEF2]">Мебель-К</span>
-        <span>© 2026 Мебель на заказ, Ростов-на-Дону</span>
-      </div>
-      <div class="hidden md:flex items-center gap-6">
-        <span>ИП Шалунц К.З. • ИНН 612202354633</span>
-        <a href="#" class="hover:text-white">Макс</a>
-        <a href="#" class="hover:text-white">Telegram</a>
-         <a href="#" class="hover:text-white">WhatsApp</a>
-      </div>
-    </div>
-  </footer>
 </section>
 
-<!-- Modal -->
-<div id="projectModal" class="fixed inset-0 z-[70] hidden">
-  <div id="modalBg" class="absolute inset-0 bg-[#0B121A]/80 backdrop-blur-[10px]"></div>
-  <div class="relative max-w-[960px] mx-auto mt-[6vh] mb-[4vh] mx-4 md:mx-auto bg-[#1B2A3A] border border-[#2A3C52] rounded-[24px] overflow-hidden">
-    <button id="modalClose" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#141E2A] border border-[#2A3C52] grid place-items-center text-white z-10">✕</button>
-    <div class="grid md:grid-cols-[1.2fr_.8fr]">
-      <div class="aspect-[4/3] bg-[#141E2A]"><img id="modalImg" src="" class="w-full h-full object-cover"></div>
-      <div class="p-7 md:p-8">
-        <div id="modalTag" class="inline-flex px-3 py-1 rounded-full bg-[#6ED3C8] text-[11px] font-semibold text-[#0E1722]">Кухня</div>
-        <h3 id="modalTitle" class="serif mt-4 text-[28px] leading-[1.05]"></h3>
-        <p id="modalText" class="mt-4 text-[14px] leading-[1.6] text-[#A8BDD4]"></p>
-        <div id="modalSpecs" class="mt-6 space-y-2 text-[13px]"></div>
-        <button onclick="scrollToForm(); closeModal()" class="btn-primary mt-8 w-full h-11 rounded-full font-semibold text-[14px]">Хочу такую же</button>
+<!-- ================= FOOTER ================= -->
+<footer id="contacts">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="logo" href="#top">
+          <svg viewBox="0 0 44 44" width="42" height="42" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="41" height="41" rx="12" fill="none" stroke="url(#lgA)" stroke-width="2"/>
+            <path d="M12 30V15l10 11 10-11v15" fill="none" stroke="url(#lgA)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель на заказ · с 2008 года</em></span>
+        </a>
+        <p>Проектируем и производим кухни на заказ и мебель для офиса в Ростове-на-Дону и области. ЧПУ-точность, честные материалы, монтаж без пыли.</p>
       </div>
+      <div>
+        <div class="foot-h">Контакты</div>
+        <div class="foot-list">
+          <a href="tel:+79010007331">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +7 (901) 000-73-31
+          </a>
+          <a href="mailto:MebelK-61@yandex.ru">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+            MebelK-61@yandex.ru
+          </a>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ростовская область, Мясниковский район,<br>с. Чалтырь, ул. Сарьяна, дом 26
+          </span>
+        </div>
+      </div>
+      <div>
+        <div class="foot-h">Мы на связи</div>
+        <div class="foot-soc">
+          <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            Написать в WhatsApp
+          </a>
+          <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Написать в Telegram
+          </a>
+          <a class="soc soc-max" href="https://max.ru/u/f9LHodD0cOIOdwOTrcJ1S3gwxxsyjj9R6tX2bw0PO-3xGs4-q1DjfRZB45c" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V6.5L12 14l7-7.5V19"/></svg>
+            Написать в Max
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2025</span> Мебель-К · Производство мебели с 2008 года</span>
+      <span>ИП Шалунц К.З. · ИНН 612202354633</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="projectModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="modal-close" data-close aria-label="Закрыть">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal-media">
+      <img id="mImg" src="" alt="">
+      <span class="tag" id="mTag"></span>
+    </div>
+    <div class="modal-body">
+      <h3 id="mTitle"></h3>
+      <p class="mdesc" id="mDesc"></p>
+      <div class="mquote" id="mQuote"></div>
+      <a class="btn btn-primary btn-sm modal-cta" href="#lead" id="mCta">Заказать похожий проект</a>
     </div>
   </div>
 </div>
 
-<!-- Toast -->
-<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] hidden">
-  <div class="px-5 py-3 rounded-full bg-white text-[#141E2A] text-[13px] font-medium shadow-[0_10px_30px_rgba(0,0,0,.4)] flex items-center gap-2">
-    <span class="w-5 h-5 rounded-full bg-[#6ED3C8] grid place-items-center text-[#0E1722]">✓</span>
-    <span id="toastText">Заявка отправлена. Ответим за 17 минут.</span>
-  </div>
-</div>
+<!-- floating whatsapp -->
+<a class="float-wa" id="floatWa" href="https://wa.me/79010007331" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
 
 <script>
-// Header scroll
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 20){ header.classList.add('bg-[#141E2A]/80','backdrop-blur-xl','border-[#1E2D3D]'); }
-  else { header.classList.remove('bg-[#141E2A]/80','backdrop-blur-xl','border-[#1E2D3D]'); }
-});
+(function(){
+  'use strict';
 
-// Burger
-document.getElementById('burger').addEventListener('click', ()=>{
-  document.getElementById('mobMenu').classList.toggle('hidden');
-});
-document.querySelectorAll('.moblink').forEach(a=> a.addEventListener('click', ()=>{
-  document.getElementById('mobMenu').classList.add('hidden');
-}));
+  /* ---------- year ---------- */
+  var yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Reveal
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-},{threshold:0.15});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  /* ---------- header scroll ---------- */
+  var header = document.getElementById('header');
+  var floatWa = document.getElementById('floatWa');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle('scrolled', y > 30);
+    floatWa.classList.toggle('show', y > 500);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 
-// Parallax hero
-const heroImg = document.getElementById('heroImg');
-window.addEventListener('scroll', ()=>{
-  const y = window.scrollY * 0.12;
-  if(heroImg) heroImg.style.transform = `scale(1.06) translateY(${y}px)`;
-});
+  /* ---------- mobile menu ---------- */
+  var burger = document.getElementById('burger');
+  var mnav = document.getElementById('mnav');
+  function closeMenu(){
+    burger.classList.remove('open');
+    mnav.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
 
-// Portfolio filter
-const filterBtns = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.portfolio-card');
-filterBtns.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    filterBtns.forEach(b=>{ b.classList.remove('active','bg-white','text-[#141E2A]','font-semibold'); b.classList.add('text-[#8AA0B8]'); });
-    btn.classList.add('active','bg-white','text-[#141E2A]','font-semibold');
-    btn.classList.remove('text-[#8AA0B8]');
-    const f = btn.dataset.filter;
-    cards.forEach(c=>{
-      if(f==='all' || c.dataset.type===f){ c.style.display=''; setTimeout(()=>c.style.opacity='1',10); }
-      else { c.style.opacity='0'; setTimeout(()=>c.style.display='none',200); }
+  /* ---------- active nav on scroll ---------- */
+  var navLinks = document.querySelectorAll('nav.main a[data-nav]');
+  var sections = [];
+  navLinks.forEach(function(a){
+    var s = document.getElementById(a.getAttribute('data-nav'));
+    if(s) sections.push({el:s, link:a});
+  });
+  if('IntersectionObserver' in window && sections.length){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.remove('active'); });
+          var found = sections.find(function(s){ return s.el === en.target; });
+          if(found) found.link.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(function(s){ navObs.observe(s.el); });
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var rObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en, i){
+        if(en.isIntersecting){
+          var el = en.target;
+          var siblings = Array.prototype.slice.call(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); });
+          var idx = siblings.indexOf(el);
+          el.style.transitionDelay = (idx > 0 ? Math.min(idx,5) * 90 : 0) + 'ms';
+          el.classList.add('in');
+          rObs.unobserve(el);
+        }
+      });
+    }, {threshold:.12});
+    reveals.forEach(function(el){ rObs.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- portfolio modal ---------- */
+  var PROJECTS = {
+    p1:{
+      tag:'Кухня',
+      title:'Кухня в стиле минимализм для ЖК «Вересаево»',
+      img:'https://i.postimg.cc/2SQNM7DL/designarena-image-5w4nu3jt.png',
+      desc:'Моно-кухня без верхних ручек. Светлая современная кухня с матовыми серо-бежевыми фасадами, каменной столешницей с мраморным рисунком, островом, встроенной техникой и мягкой LED-подсветкой.',
+      quote:'Лаконичная композиция без лишних деталей делает кухню визуально лёгкой, сохраняя максимум функциональности и комфорта.'
+    },
+    p2:{
+      tag:'Офис',
+      title:'Современная мебель для офиса в классическом стиле. БЦ «Гвардейский»',
+      img:'https://i.postimg.cc/wxRqFJ1z/Whats-App-Image-2026-09-17-at-16-55-12.jpg',
+      desc:'Светлый современный офис с панорамными окнами, открытой планировкой и несколькими рабочими зонами. В интерьере — офисные столы и тумбы из натурального дерева тёплого орехового оттенка, эргономичные белые кресла, встроенные стеллажи и шкафы для хранения документов и книг.',
+      quote:'Премиальная офисная атмосфера. Тёплая фактура древесины гармонично сочетается с белыми эргономичными креслами и холодными оттенками камня, создавая современную и спокойную рабочую атмосферу. Продуманная система столов, тумб и стеллажей обеспечивает комфортную организацию пространства, а лаконичные формы подчёркивают элегантный минималистичный стиль офиса.'
+    },
+    p3:{
+      tag:'Кухня',
+      title:'Кухня в стиле прованс',
+      img:'https://i.postimg.cc/8CnGmPGZ/designarena-image-agk3zyfa.png',
+      desc:'Уютная угловая кухня с фасадами из окрашенного МДФ насыщенного бирюзового оттенка, декоративной фрезеровкой и стеклянными вставками, светлая столешница, открытые полки, встроенная техника и остров-барная стойка. Фартук из декоративной плитки с орнаментом, деревянные и керамические детали, естественный дневной свет.',
+      quote:'Выразительные бирюзовые фасады и винтажная плитка создают атмосферу тёплого загородного дома. Светлая столешница, удобный остров и продуманное хранение объединяют декоративность с комфортом, а натуральные фактуры добавляют интерьеру уюта.'
+    },
+    p4:{
+      tag:'Кухня',
+      title:'Кухня для семьи в классическом стиле',
+      img:'https://i.postimg.cc/8CsQcQvb/designarena-image-v8egivec.png',
+      desc:'Элегантная кухня в классическом стиле с изысканными фасадами, декоративной резьбой и благородной светлой цветовой гаммой.',
+      quote:'Продуманная композиция сочетает выразительный декор с функциональностью, создавая гармоничное и уютное пространство для дома.'
+    }
+  };
+
+  var modal = document.getElementById('projectModal');
+  var mImg = document.getElementById('mImg');
+  var mTag = document.getElementById('mTag');
+  var mTitle = document.getElementById('mTitle');
+  var mDesc = document.getElementById('mDesc');
+  var mQuote = document.getElementById('mQuote');
+
+  function openModal(id){
+    var p = PROJECTS[id];
+    if(!p) return;
+    mImg.src = p.img;
+    mImg.alt = p.title;
+    mTag.textContent = p.tag;
+    mTitle.textContent = p.title;
+    mDesc.textContent = p.desc;
+    mQuote.textContent = p.quote;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-project]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openModal(btn.getAttribute('data-project')); });
+  });
+  modal.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click', closeModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      if(modal.classList.contains('open')) closeModal();
+      if(mnav.classList.contains('open')) closeMenu();
+    }
+  });
+  var mCta = document.getElementById('mCta');
+  if(mCta) mCta.addEventListener('click', function(){ closeModal(); });
+
+  /* ---------- phone mask ---------- */
+  var phone = document.getElementById('phone');
+  phone.addEventListener('input', function(){
+    var d = phone.value.replace(/\D/g,'');
+    if(d.length === 0){ phone.value = ''; return; }
+    if(d[0] === '8') d = '7' + d.slice(1);
+    if(d[0] !== '7') d = '7' + d;
+    d = d.slice(0,11);
+    var out = '+7';
+    if(d.length > 1) out += ' (' + d.slice(1,4);
+    if(d.length >= 5) out += ') ' + d.slice(4,7);
+    if(d.length >= 8) out += '-' + d.slice(7,9);
+    if(d.length >= 10) out += '-' + d.slice(9,11);
+    phone.value = out;
+  });
+
+  /* ---------- form validation + submit ---------- */
+  var form = document.getElementById('leadForm');
+  var success = document.getElementById('formSuccess');
+  var EMAIL = 'MebelK-61@yandex.ru';
+
+  function setError(fieldId, has){
+    var f = document.getElementById(fieldId);
+    if(f) f.classList.toggle('error', has);
+    return !has;
+  }
+  ['name','phone','ptype','psize'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', function(){
+      el.closest('.field').classList.remove('error');
+    });
+    if(el && el.tagName === 'SELECT') el.addEventListener('change', function(){
+      el.closest('.field').classList.remove('error');
     });
   });
-});
 
-// Modal
-const modal = document.getElementById('projectModal');
-const modalImg = document.getElementById('modalImg');
-const modalTitle = document.getElementById('modalTitle');
-const modalText = document.getElementById('modalText');
-const modalTag = document.getElementById('modalTag');
-const modalSpecs = document.getElementById('modalSpecs');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phoneVal = document.getElementById('phone').value.trim();
+    var ptype = document.getElementById('ptype').value;
+    var psize = document.getElementById('psize').value.trim();
+    var comment = document.getElementById('pcomment').value.trim();
 
-function openModalFromCard(card){
-  const img = card.querySelector('img').src;
-  const title = card.querySelector('h3').innerText;
-  const text = card.querySelector('p').innerText;
-  const tags = [...card.querySelectorAll('.mt-5 span')].map(s=>s.innerText);
-  modalImg.src = img;
-  modalTitle.innerText = title;
-  modalText.innerText = text;
-  modalTag.innerText = card.dataset.type==='kitchen' ? 'Кухня на заказ' : 'Офисная мебель';
-  modalSpecs.innerHTML = tags.map(t=>`<div class="flex gap-2"><span class="text-[#5A708A]">—</span><span class="text-[#C6D5E5]">${t}</span></div>`).join('');
-  modal.classList.remove('hidden');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
-document.querySelectorAll('.portfolio-card').forEach(c=> c.addEventListener('click', ()=> openModalFromCard(c)));
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalBg').addEventListener('click', closeModal);
+    var ok = true;
+    ok = setError('f-name', name.length < 2) && ok;
+    ok = setError('f-phone', phoneVal.replace(/\D/g,'').length !== 11) && ok;
+    ok = setError('f-type', !ptype) && ok;
+    ok = setError('f-size', psize.length < 2) && ok;
 
-// Scroll to form
-function scrollToForm(){
-  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-  setTimeout(()=>{ document.querySelector('input[name="name"]').focus(); },600);
-}
+    if(!ok){
+      var firstErr = form.querySelector('.field.error input, .field.error select');
+      if(firstErr) firstErr.focus();
+      return;
+    }
 
-// Form
-document.getElementById('leadForm').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const fd = new FormData(e.target);
-  const phone = fd.get('phone');
-  if(!phone || phone.replace(/\D/g,'').length < 10){
-    showToast('Укажите корректный телефон');
-    return;
-  }
-  showToast(`Спасибо, ${fd.get('name')||''}! Расчет пришлем в Telegram за 2 часа.`);
-  e.target.reset();
-});
+    var lines = [
+      'Заявка с сайта — Мебель-К','',
+      'Имя: ' + name,
+      'Телефон: ' + phoneVal,
+      'Что делаем: ' + ptype,
+      'Размеры/площадь: ' + psize,
+      'Комментарии: ' + (comment || '—')
+    ];
+    var subject = 'Заявка с сайта — Мебель-К';
+    var body = lines.join('\n');
+    /* Отправка данных на почту MebelK-61@yandex.ru */
+    window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-function showToast(msg){
-  const t = document.getElementById('toast');
-  document.getElementById('toastText').innerText = msg;
-  t.classList.remove('hidden');
-  setTimeout(()=> t.classList.add('hidden'), 3800);
-}
+    form.style.display = 'none';
+    success.classList.add('show');
+  });
+})();
 </script>
 </body>
 </html>
