@@ -70,14 +70,9 @@
     border-bottom-color:var(--line);
   }
   .header-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
-  .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
-  ./* Профессиональная настройка логотипа */
-.logo-img {
-    height: 44px;          /* Оптимальная высота под шапку 78px */
-    width: auto;           /* Пропорции сохраняются автоматически */
-    max-height: 100%;
-    object-fit: contain;
-    display: block;
+ .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}  .
+logo-img { height: 42px; width: auto; max-width: 140px; object-fit: contain; display: block; }  .l
+ogo-text{line-height:1.1}
 }
   .logo-text{line-height:1.1}
   .logo-text b{font-family:var(--font-d);font-weight:400;font-size:15px;letter-spacing:.14em;display:block}
@@ -335,27 +330,30 @@
 </svg>
 
 <!-- ================= HEADER ================= -->
-<header>
-    <div class="container">
-        <div class="header-in">
-            <a href="/" class="logo">
-                <img src="images/Логотип%20основной.png" alt="Мебель-К" class="logo-img">
-                <div class="logo-text">
-                <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель на заказ • Ростов-на-Дону</em></span>
-    </a>
-    <nav class="main" aria-label="Основная навигация">
-      <a href="#portfolio" data-nav="portfolio">Проекты</a>
-      <a href="#advantages" data-nav="advantages">Преимущества</a>
-      <a href="#process" data-nav="process">Как работаем</a>
-      <a href="#contacts" data-nav="contacts">Контакты</a>
-    </nav>
-    <div class="header-right">
-      <a class="header-phone" href="tel:+79010007331">
-      </a>
-      <a class="btn btn-primary btn-sm header-cta" href="#lead">3D-проект за 48 ч</a>
-      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </div>
+>
+<header id="header">  
+<div class="container header-in">   
+ <a class="logo" href="#top" aria-label="Мебель-К — на главную">    
+  
+   <!-- Вставка картинки логотипа вместо SVG-иконки -->
+   <img class="logo-img" src="images/Логотип%20основной.png" alt="" aria-hidden="true">     
+   
+   <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель назаказ • Ростов-на-Дону</em></span>    
+ </a>    
+<nav class="main" aria-label="Основная навигация">      
+  <a href="#portfolio" data-nav="portfolio">Проекты</a>      
+  <a href="#advantages" data-nav="advantages">Преимущества</a>      
+  <a href="#process" data-nav="process">Как работаем</a>      
+  <a href="#contacts" data-nav="contacts">Контакты</a>    
+</nav>    
+<div class="header-right">      
+  <a class="header-phone" href="tel:+79010007331"></a>      
+  <a class="btn btn-primary btn-sm header-cta" href="#lead">3D-проект за 48 ч</a>      
+  <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>    
+</div>  
+</div>
 </header>
 
 <!-- mobile menu -->
