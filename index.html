@@ -71,7 +71,14 @@
   }
   .header-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
   .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
-  .logo-img { height: 44px; width: auto; object-fit: contain; }
+  ./* Профессиональная настройка логотипа */
+.logo-img {
+    height: 58px;          /* Оптимальная высота под шапку 78px */
+    width: auto;           /* Пропорции сохраняются автоматически */
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
   .logo-text{line-height:1.1}
   .logo-text b{font-family:var(--font-d);font-weight:400;font-size:15px;letter-spacing:.14em;display:block}
   .logo-text em{font-style:normal;font-size:10.5px;letter-spacing:.08em;color:var(--muted);display:block;margin-top:3px}
@@ -328,14 +335,13 @@
 </svg>
 
 <!-- ================= HEADER ================= -->
-<header id="header">
-  <div class="container header-in">
-    <a class="logo" href="#top" aria-label="Мебель-К — на главную">
-      <svg viewBox="0 0 44 44" width="42" height="42" aria-hidden="true">
-        <rect x="1.5" y="1.5" width="41" height="41" rx="12" fill="none" stroke="url(#lgA)" stroke-width="2"/>
-        <path d="M12 30V15l10 11 10-11v15" fill="none" stroke="url(#lgA)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель на заказ • Ростов-на-Дону</em></span>
+<header>
+    <div class="container">
+        <div class="header-in">
+            <a href="/" class="logo">
+                <img src="images/Логотип%20основной.png" alt="Мебель-К" class="logo-img">
+                <div class="logo-text">
+                <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель на заказ • Ростов-на-Дону</em></span>
     </a>
     <nav class="main" aria-label="Основная навигация">
       <a href="#portfolio" data-nav="portfolio">Проекты</a>
