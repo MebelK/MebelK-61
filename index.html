@@ -71,8 +71,15 @@
   }
   .header-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
  .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}  .
-logo-img { height: 42px; width: auto; max-width: 140px; object-fit: contain; display: block; }  .l
-ogo-text{line-height:1.1}
+.logo-img {
+    height: 48px;
+    width: auto;
+    max-width: none;              /* Запрещает обрезать ширину */
+    object-fit: contain;         /* Вписывает птицу целиком без обрезки */
+    object-position: center;     /* Центрирует изображение */
+    flex-shrink: 0;              /* Запрещает сжимать логотип */
+    padding: 2px 0;              /* Дает 2px запаса сверху и снизу */
+    display: block;
 }
   .logo-text{line-height:1.1}
   .logo-text b{font-family:var(--font-d);font-weight:400;font-size:15px;letter-spacing:.14em;display:block}
