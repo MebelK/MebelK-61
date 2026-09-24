@@ -70,15 +70,16 @@
     border-bottom-color:var(--line);
   }
   .header-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
- .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}  .
-.logo-img { 
-    height: 250px; 
-    width: 250px; 
-    object-fit: contain; /* Гарантирует, что птица не обрежется и не исказится */
+ .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-img {
+    height: 44px;               /* Оптимальная высота, чтобы не раздувать шапку */
+    width: auto;                /* Сохраняет пропорции птицы */
+    object-fit: contain;        /* Гарантирует, что птица впишется целиком без срезов */
     display: block;
-    max-width: none; 
-    flex-shrink: 0;
+    flex-shrink: 0;             /* Запрещает сжимать логотип по ширине */
 }
+
+.logo-text{line-height:1.1}
   .logo-text{line-height:1.1}
   .logo-text b{font-family:var(--font-d);font-weight:400;font-size:15px;letter-spacing:.14em;display:block}
   .logo-text em{font-style:normal;font-size:10.5px;letter-spacing:.08em;color:var(--muted);display:block;margin-top:3px}
@@ -340,11 +341,11 @@
 <div class="container header-in">   
  <a class="logo" href="#top" aria-label="Мебель-К — на главную">    
   
-   <!-- Вставка картинки логотипа вместо SVG-иконки -->
-   <img class="logo-img" src="images/Логотип%20основной.png" alt="" aria-hidden="true">     
-   
-   <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель назаказ • Ростов-на-Дону</em></span>    
- </a>    
+  <!-- ВСТАВЛЯЕМ КАРТИНКУ С КЛАССОМ logo-img -->
+  <img class="logo-img" src="images/Логотип%20основной.png" alt="Мебель-К">
+  
+  <span class="logo-text"><b>МЕБЕЛЬ-К</b><em>мебель на заказ • Ростов-на-Дону</em></span>    
+</a>
 <nav class="main" aria-label="Основная навигация">      
   <a href="#portfolio" data-nav="portfolio">Проекты</a>      
   <a href="#advantages" data-nav="advantages">Преимущества</a>      
