@@ -389,6 +389,9 @@
   .zoom-hint{position:absolute;right:16px;top:16px;z-index:3;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(15,22,31,.72);border:1px solid rgba(94,234,212,.4);color:var(--teal);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s;pointer-events:none}
   .card:hover .zoom-hint,.modal-media:hover .zoom-hint{opacity:1;transform:none}
   .modal-media .zoom-hint{top:auto;bottom:16px}
+  .photo-count{position:absolute;left:16px;bottom:16px;z-index:3;display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;color:#fff;background:rgba(15,22,31,.72);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none}
+  .photo-count svg{color:var(--teal)}
+  .photo-count[hidden]{display:none}
   @media (hover:none){ .zoom-hint{opacity:1;transform:none;width:36px;height:36px} }
 
   /* ---------- просмотр фото на весь экран ---------- */
@@ -585,7 +588,17 @@
 
     <!-- Плитки-разделы портфолио. Нажатие открывает галерею раздела.
          Чтобы проект попал в галерею, укажите у карточки
-         data-cat="kitchens" (Кухни), "wardrobes" (Шкафы и гардеробные) или "offices" (Офисы). -->
+         data-cat="kitchens" (Кухни), "wardrobes" (Шкафы и гардеробные) или "offices" (Офисы).
+
+         НЕСКОЛЬКО ФОТО В ОДНОМ ПРОЕКТЕ: сразу после блока <div class="card-media">...</div>
+         вставьте внутри карточки:
+           <template class="card-photos">
+             <img src="images/Кухня Вересаево 2.jpg" alt="">
+             <img src="images/Кухня Вересаево 3.jpg" alt="">
+           </template>
+         Главным (на карточке) остаётся фото из card-media, дополнительные видны при просмотре
+         на весь экран. На карточке сам появится значок «3 фото». -->
+
     <div class="pf-cats">
       <button class="pf-cat reveal" type="button" data-cat-open="kitchens" aria-expanded="false" aria-controls="pf-gallery">
         <!-- Фото на плитке: замените src на любое фото кухни -->
@@ -874,11 +887,11 @@
           <img src="Современная кухня в светлых тонах с золотыми акцентами.jpg" alt="Современная кухня в светлых тонах с золотыми акцентами" loading="lazy">
           <span class="tag">Кухня</span>
         </div>
-         <template class="card-photos">
-    <img src="i3_рабочая_зона.jpg" alt="i3_рабочая_зона">
-    <img src="2_фасады_и_ручки.jpg" alt="2_фасады_и_ручки">
-    <img src="01_витрина.jpg" alt="01_витрина">
-  </template>
+        <template class="card-photos">
+          <img src="3_рабочая_зона.jpg" alt="Рабочая зона кухни с золотыми акцентами">
+          <img src="2_фасады_и_ручки.jpg" alt="Матовые фасады и золотистые ручки">
+          <img src="01_витрина.jpg" alt="Стеклянная витрина в золотистом профиле">
+        </template>
         <div class="card-body">
           <h3>Современная кухня в светлых тонах с золотыми акцентами</h3>
           <p class="card-desc">Стильная прямая кухня с лаконичными матовыми фасадами светло-серого оттенка, дополненная элегантными золотистыми ручками и встроенной бытовой техникой.</p>
@@ -972,6 +985,10 @@
           <img src="images/Название фото.jpg" alt="Шкаф-купе с зеркальными дверями" loading="lazy">
           <span class="tag">Гардеробная</span>
         </div>
+        <template class="card-photos">
+          <img src="images/Фото 2.jpg" alt="">
+          <img src="images/Фото 3.jpg" alt="">
+        </template>
         <div class="card-body">
           <h3>Заголовок проекта</h3>
           <p class="card-desc">Короткое описание: материалы, наполнение, размеры.</p>
@@ -1492,6 +1509,7 @@
     mQuote.hidden = !mQuote.textContent;
     mCurrentCat = card.dataset.cat || null;
     mCurrentCard = card;
+    setPhotoCount(modal.querySelector('.modal-media'), cardPhotos(card).length);
     mLastFocus = document.activeElement;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
@@ -1531,13 +1549,19 @@
     el.appendChild(s);
   }
 
-  function cardPhoto(card){
-    var img = card.querySelector('.card-media img');
-    return {
-      src: img ? img.getAttribute('src') : '',
-      alt: img ? img.alt : '',
-      title: textOf(card, 'h3')
-    };
+  // Все фото проекта: главное фото карточки + фото из блока <template class="card-photos">
+  function cardPhotos(card){
+    var list = [];
+    var main = card.querySelector('.card-media img');
+    if(main) list.push({src: main.getAttribute('src'), alt: main.alt});
+    var tpl = card.querySelector('template.card-photos');
+    if(tpl && tpl.content){
+      Array.prototype.forEach.call(tpl.content.querySelectorAll('img'), function(img){
+        var src = img.getAttribute('src');
+        if(src) list.push({src: src, alt: img.getAttribute('alt') || ''});
+      });
+    }
+    return list;
   }
 
   // Листаем только те проекты, что видны в открытой галерее
@@ -1545,28 +1569,47 @@
     return pfCards.filter(function(c){ return !c.classList.contains('is-hidden'); });
   }
 
+  // Один общий список «слайдов»: все фото первого проекта, затем все фото второго и т.д.
+  function buildSlides(cards){
+    var slides = [];
+    cards.forEach(function(card, p){
+      var photos = cardPhotos(card);
+      photos.forEach(function(ph, k){
+        slides.push({card: card, src: ph.src, alt: ph.alt, photo: k, photos: photos.length, project: p, projects: cards.length});
+      });
+    });
+    return slides;
+  }
+
   function lbShow(i){
     var n = lbList.length;
     if(!n) return;
     lbIndex = (i + n) % n;
-    var p = cardPhoto(lbList[lbIndex]);
+    var s = lbList[lbIndex];
+    var title = textOf(s.card, 'h3');
     lb.classList.add('is-loading');
     lbImg.onload = lbImg.onerror = function(){ lb.classList.remove('is-loading'); };
-    lbImg.src = p.src;
-    lbImg.alt = p.alt || p.title;
-    lbTitle.textContent = p.title;
-    lbCounter.textContent = n > 1 ? (lbIndex + 1) + ' из ' + n : '';
+    lbImg.src = s.src;
+    lbImg.alt = s.alt || title;
+    lbTitle.textContent = title;
+    var parts = [];
+    if(s.photos > 1) parts.push('Фото ' + (s.photo + 1) + ' из ' + s.photos);
+    if(s.projects > 1) parts.push('Проект ' + (s.project + 1) + ' из ' + s.projects);
+    lbCounter.textContent = parts.join('  ·  ');
     lbPrev.hidden = lbNext.hidden = n < 2;
     // заранее подгружаем соседние фото, чтобы листалось без задержки
-    [lbIndex + 1, lbIndex - 1].forEach(function(j){
-      if(n > 1){ var pre = new Image(); pre.src = cardPhoto(lbList[(j + n) % n]).src; }
-    });
+    if(n > 1){
+      [lbIndex + 1, lbIndex - 1].forEach(function(j){
+        var pre = new Image(); pre.src = lbList[(j + n) % n].src;
+      });
+    }
   }
 
   function openLightbox(card){
-    lbList = visibleCards();
-    var i = lbList.indexOf(card);
-    if(i < 0){ lbList = [card]; i = 0; }
+    lbList = buildSlides(visibleCards());
+    var i = -1;
+    for(var k = 0; k < lbList.length; k++){ if(lbList[k].card === card){ i = k; break; } }
+    if(i < 0){ lbList = buildSlides([card]); i = 0; }
     lbLastFocus = document.activeElement;
     lb.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -1583,10 +1626,25 @@
   }
 
   // Нажатие на фото в карточке
+  var CAMERA_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+  function setPhotoCount(el, n){
+    if(!el) return;
+    var b = el.querySelector('.photo-count');
+    if(n < 2){ if(b) b.hidden = true; return; }
+    if(!b){
+      b = document.createElement('span');
+      b.className = 'photo-count';
+      el.appendChild(b);
+    }
+    b.hidden = false;
+    b.innerHTML = CAMERA_ICON + '<span>' + n + ' фото</span>';
+  }
+
   pfCards.forEach(function(card){
     var media = card.querySelector('.card-media');
     if(!media) return;
     addZoomHint(media);
+    setPhotoCount(media, cardPhotos(card).length);
     media.setAttribute('role', 'button');
     media.setAttribute('tabindex', '0');
     media.setAttribute('aria-label', 'Увеличить фото: ' + textOf(card, 'h3'));
