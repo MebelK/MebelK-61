@@ -29,7 +29,7 @@
   "url": "https://mebel-krostov.ru/",
   "logo": "https://mebel-krostov.ru/images/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9.png",
   "telephone": "+7-901-000-73-31",
-  "email": "MebelK-61@yandex.ru",
+  "email": "mebel-krostov@yandex.ru",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "ул. Гагарина, 40",
@@ -383,6 +383,42 @@
   .modal-media{position:relative;min-height:320px}
   .modal-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .modal-media .tag{top:18px;left:18px}
+
+  /* ---------- увеличение фото (значок лупы) ---------- */
+  .card-media,.modal-media{cursor:zoom-in}
+  .zoom-hint{position:absolute;right:16px;top:16px;z-index:3;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(15,22,31,.72);border:1px solid rgba(94,234,212,.4);color:var(--teal);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s;pointer-events:none}
+  .card:hover .zoom-hint,.modal-media:hover .zoom-hint{opacity:1;transform:none}
+  .modal-media .zoom-hint{top:auto;bottom:16px}
+  @media (hover:none){ .zoom-hint{opacity:1;transform:none;width:36px;height:36px} }
+
+  /* ---------- просмотр фото на весь экран ---------- */
+  .lb{position:fixed;inset:0;z-index:300;background:rgba(8,12,18,.96);display:flex;align-items:center;justify-content:center;animation:fade .25s ease;touch-action:pan-y}
+  .lb[hidden]{display:none}
+  .lb-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:70px 90px 96px}
+  .lb-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);transition:opacity .25s ease;user-select:none;-webkit-user-drag:none}
+  .lb.is-loading .lb-img{opacity:.25}
+  .lb-loader{position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:3px solid rgba(94,234,212,.2);border-top-color:var(--teal);animation:lbspin .8s linear infinite;opacity:0;transition:opacity .2s;pointer-events:none}
+  .lb.is-loading .lb-loader{opacity:1}
+  @keyframes lbspin{to{transform:rotate(360deg)}}
+  .lb-btn{position:absolute;z-index:2;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.16);background:rgba(22,32,45,.7);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .25s,color .25s,background .25s,transform .25s}
+  .lb-btn:hover{border-color:var(--teal);color:var(--teal)}
+  .lb-btn:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(94,234,212,.35)}
+  .lb-close{top:18px;right:18px;width:46px;height:46px}
+  .lb-close:hover{transform:rotate(90deg)}
+  .lb-prev{left:22px;top:50%;margin-top:-26px}
+  .lb-next{right:22px;top:50%;margin-top:-26px}
+  .lb-btn[hidden]{display:none}
+  .lb-caption{position:absolute;left:0;right:0;bottom:0;padding:18px 24px 26px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;pointer-events:none}
+  .lb-title{font-family:var(--font-d);font-weight:400;font-size:16px;line-height:1.4;color:var(--text);max-width:760px}
+  .lb-counter{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--teal)}
+  @media (max-width:640px){
+    .lb-stage{padding:64px 10px 92px}
+    .lb-prev,.lb-next{top:auto;bottom:22px;margin-top:0;width:46px;height:46px}
+    .lb-prev{left:14px}
+    .lb-next{right:14px}
+    .lb-caption{padding:0 72px 24px;min-height:92px;justify-content:flex-end}
+    .lb-title{font-size:14px}
+  }
   .modal-body{padding:38px 34px;display:flex;flex-direction:column;gap:14px}
   .modal-body h3{font-family:var(--font-d);font-weight:400;font-size:20px;line-height:1.4;padding-right:30px}
   .modal-body .mdesc{font-size:14.5px;color:var(--muted)}
@@ -1030,7 +1066,7 @@
     </div>
 
     <div class="form-card reveal">
-      <form id="leadForm" action="mailto:MebelK-61@yandex.ru" method="POST" enctype="text/plain" novalidate>
+      <form id="leadForm" action="mailto:mebel-krostov@yandex.ru" method="POST" enctype="text/plain" novalidate>
         <div class="form-title">Получить расчёт за 2 часа</div>
         <div class="form-row">
           <div class="field" id="f-name">
@@ -1076,7 +1112,7 @@
           <div class="soc-row">
             <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener">WhatsApp</a>
             <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener">Telegram</a>
-            <a class="form-fail-mail" id="formFailMail" href="mailto:MebelK-61@yandex.ru">Отправить письмом</a>
+            <a class="form-fail-mail" id="formFailMail" href="mailto:mebel-krostov@yandex.ru">Отправить письмом</a>
           </div>
         </div>
         <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Ответим в течение 2 часов — обычно за 15 минут.</p>
@@ -1119,9 +1155,9 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             +7 (901) 000-73-31
           </a>
-          <a href="mailto:MebelK-61@yandex.ru">
+          <a href="mailto:mebel-krostov@yandex.ru">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
-            MebelK-61@yandex.ru
+            mebel-krostov@yandex.ru
           </a>
           <span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 
@@ -1171,6 +1207,27 @@
       <div class="mquote" id="mQuote"></div>
       <a class="btn btn-primary btn-sm modal-cta" href="#lead" id="mCta">Заказать похожий проект</a>
     </div>
+  </div>
+</div>
+
+<!-- ================= ПРОСМОТР ФОТО НА ВЕСЬ ЭКРАН ================= -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото" hidden>
+  <div class="lb-stage" id="lbStage">
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <div class="lb-loader" aria-hidden="true"></div>
+  </div>
+  <button class="lb-btn lb-close" type="button" id="lbClose" aria-label="Закрыть просмотр">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" type="button" id="lbPrev" aria-label="Предыдущее фото">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="lb-btn lb-next" type="button" id="lbNext" aria-label="Следующее фото">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="lb-caption">
+    <span class="lb-title" id="lbTitle"></span>
+    <span class="lb-counter" id="lbCounter"></span>
   </div>
 </div>
 
@@ -1414,6 +1471,7 @@
     mQuote.textContent = textOf(card, '.card-quote');
     mQuote.hidden = !mQuote.textContent;
     mCurrentCat = card.dataset.cat || null;
+    mCurrentCard = card;
     mLastFocus = document.activeElement;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
@@ -1429,6 +1487,138 @@
   }
   document.querySelectorAll('#pf-cards .card-more').forEach(function(btn){
     btn.addEventListener('click', function(){ openModal(btn.closest('.card')); });
+  });
+
+  /* ---------- просмотр фото на весь экран ---------- */
+  var mCurrentCard = null;
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbTitle = document.getElementById('lbTitle');
+  var lbCounter = document.getElementById('lbCounter');
+  var lbPrev = document.getElementById('lbPrev');
+  var lbNext = document.getElementById('lbNext');
+  var lbList = [];
+  var lbIndex = 0;
+  var lbLastFocus = null;
+  var ZOOM_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>';
+
+  function addZoomHint(el){
+    if(!el || el.querySelector('.zoom-hint')) return;
+    var s = document.createElement('span');
+    s.className = 'zoom-hint';
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = ZOOM_ICON;
+    el.appendChild(s);
+  }
+
+  function cardPhoto(card){
+    var img = card.querySelector('.card-media img');
+    return {
+      src: img ? img.getAttribute('src') : '',
+      alt: img ? img.alt : '',
+      title: textOf(card, 'h3')
+    };
+  }
+
+  // Листаем только те проекты, что видны в открытой галерее
+  function visibleCards(){
+    return pfCards.filter(function(c){ return !c.classList.contains('is-hidden'); });
+  }
+
+  function lbShow(i){
+    var n = lbList.length;
+    if(!n) return;
+    lbIndex = (i + n) % n;
+    var p = cardPhoto(lbList[lbIndex]);
+    lb.classList.add('is-loading');
+    lbImg.onload = lbImg.onerror = function(){ lb.classList.remove('is-loading'); };
+    lbImg.src = p.src;
+    lbImg.alt = p.alt || p.title;
+    lbTitle.textContent = p.title;
+    lbCounter.textContent = n > 1 ? (lbIndex + 1) + ' из ' + n : '';
+    lbPrev.hidden = lbNext.hidden = n < 2;
+    // заранее подгружаем соседние фото, чтобы листалось без задержки
+    [lbIndex + 1, lbIndex - 1].forEach(function(j){
+      if(n > 1){ var pre = new Image(); pre.src = cardPhoto(lbList[(j + n) % n]).src; }
+    });
+  }
+
+  function openLightbox(card){
+    lbList = visibleCards();
+    var i = lbList.indexOf(card);
+    if(i < 0){ lbList = [card]; i = 0; }
+    lbLastFocus = document.activeElement;
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lbShow(i);
+    document.getElementById('lbClose').focus();
+  }
+
+  function closeLightbox(){
+    lb.hidden = true;
+    lbImg.removeAttribute('src');
+    // если под просмотром открыто окно проекта — оставляем прокрутку заблокированной
+    if(!modal.classList.contains('open')) document.body.style.overflow = '';
+    if(lbLastFocus && lbLastFocus.focus) lbLastFocus.focus();
+  }
+
+  // Нажатие на фото в карточке
+  pfCards.forEach(function(card){
+    var media = card.querySelector('.card-media');
+    if(!media) return;
+    addZoomHint(media);
+    media.setAttribute('role', 'button');
+    media.setAttribute('tabindex', '0');
+    media.setAttribute('aria-label', 'Увеличить фото: ' + textOf(card, 'h3'));
+    media.addEventListener('click', function(){ openLightbox(card); });
+    media.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(card); }
+    });
+  });
+
+  // Нажатие на фото в окне проекта
+  var mMedia = modal.querySelector('.modal-media');
+  if(mMedia){
+    addZoomHint(mMedia);
+    mMedia.addEventListener('click', function(){ if(mCurrentCard) openLightbox(mCurrentCard); });
+  }
+
+  lbPrev.addEventListener('click', function(e){ e.stopPropagation(); lbShow(lbIndex - 1); });
+  lbNext.addEventListener('click', function(e){ e.stopPropagation(); lbShow(lbIndex + 1); });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  // клик по тёмному фону (не по фото и не по кнопкам) закрывает просмотр
+  lb.addEventListener('click', function(e){
+    if(e.target === lb || e.target.id === 'lbStage') closeLightbox();
+  });
+
+  // Клавиатура: стрелки листают, Esc закрывает (раньше, чем закроется окно проекта)
+  window.addEventListener('keydown', function(e){
+    if(lb.hidden) return;
+    if(e.key === 'Escape'){ e.preventDefault(); e.stopImmediatePropagation(); closeLightbox(); }
+    else if(e.key === 'ArrowLeft'){ e.preventDefault(); lbShow(lbIndex - 1); }
+    else if(e.key === 'ArrowRight'){ e.preventDefault(); lbShow(lbIndex + 1); }
+    else if(e.key === 'Tab'){
+      // фокус не уходит за пределы просмотра
+      var f = Array.prototype.filter.call(lb.querySelectorAll('button'), function(b){ return !b.hidden; });
+      var first = f[0], last = f[f.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  }, true);
+
+  // Свайп пальцем на телефоне
+  var tX = null, tY = null;
+  lb.addEventListener('touchstart', function(e){
+    if(e.touches.length !== 1) return;
+    tX = e.touches[0].clientX; tY = e.touches[0].clientY;
+  }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    if(tX === null) return;
+    var dx = e.changedTouches[0].clientX - tX;
+    var dy = e.changedTouches[0].clientY - tY;
+    tX = tY = null;
+    if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) lbShow(lbIndex + (dx < 0 ? 1 : -1));
+    else if(dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLightbox(); // смахнуть вниз — закрыть
   });
   modal.querySelectorAll('[data-close]').forEach(function(el){
     el.addEventListener('click', closeModal);
@@ -1465,7 +1655,7 @@
   /* ---------- form validation + submit ---------- */
   var form = document.getElementById('leadForm');
   var success = document.getElementById('formSuccess');
-  var EMAIL = 'MebelK-61@yandex.ru';
+  var EMAIL = 'mebel-krostov@yandex.ru';
 
   function setError(fieldId, has){
     var f = document.getElementById(fieldId);
