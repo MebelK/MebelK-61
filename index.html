@@ -228,6 +228,62 @@
   .card-more{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:9px;background:none;border:none;color:var(--teal);font-weight:700;font-size:14px;padding:6px 0;transition:gap .25s,color .25s}
   .card-more:hover{gap:15px;color:#fff}
 
+  /* ---------- portfolio: плитки-разделы и галерея ---------- */
+  .pf-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pf-cat{position:relative;display:block;aspect-ratio:4/5;padding:0;text-align:left;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel-solid);color:var(--text);overflow:hidden;isolation:isolate;transition:transform .35s,border-color .35s,box-shadow .35s,opacity .8s ease}
+  .pf-cat:hover{transform:translateY(-6px);border-color:rgba(94,234,212,.42);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+  .pf-cat:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(94,234,212,.35)}
+  .pf-cat[aria-expanded="true"]{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal),0 20px 50px rgba(56,189,248,.22)}
+  /* фото работы на всю плитку */
+  .pf-cat-media{position:absolute;inset:0;z-index:-1}
+  .pf-cat-media img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+  .pf-cat:hover .pf-cat-media img,.pf-cat[aria-expanded="true"] .pf-cat-media img{transform:scale(1.06)}
+  .pf-cat-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,22,31,0) 40%,rgba(15,22,31,.5) 65%,rgba(15,22,31,.9) 100%)}
+  /* заглушка, пока нет фото */
+  .pf-cat-media.is-placeholder{display:grid;place-items:center;padding-bottom:14%;color:rgba(94,234,212,.75);background:radial-gradient(circle at 50% 35%,rgba(94,234,212,.16),transparent 60%),linear-gradient(160deg,#243549,#1A2636)}
+  .pf-cat-info{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:24px 24px 22px}
+  /* название раздела — в стиле ярлыка «КУХНЯ» на карточках */
+  .pf-cat-name{position:absolute;top:16px;left:16px;right:16px;width:max-content;max-width:calc(100% - 32px);display:block;font-family:var(--font-b);font-size:13px;font-weight:800;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;padding:9px 18px;border-radius:999px;background:rgba(15,22,31,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(94,234,212,.4);color:var(--teal)}
+  .pf-cat-count{font-size:14px;color:#C9D6E4;padding-left:4px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .pf-cat-go{margin-top:6px;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:#fff;padding:9px 16px;border-radius:999px;background:rgba(15,22,31,.55);border:1px solid rgba(94,234,212,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s,color .3s,border-color .3s}
+  .pf-cat:hover .pf-cat-go,.pf-cat[aria-expanded="true"] .pf-cat-go{background:var(--grad);color:#0F1A24;border-color:transparent}
+  .pf-cat-go svg{transition:transform .35s}
+  .pf-cat[aria-expanded="true"] .pf-cat-go svg{transform:rotate(180deg)}
+  .pf-gallery{margin-top:48px;scroll-margin-top:100px;animation:fadeUp .45s ease}
+  .pf-gallery[hidden]{display:none}
+  .pf-gallery-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:20px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+  .pf-gallery-head h3{font-family:var(--font-d);font-weight:300;font-size:clamp(20px,2.4vw,28px);line-height:1.3}
+  .pf-gallery-head h3 small{font-family:var(--font-b);font-size:14px;font-weight:600;color:var(--muted);margin-left:10px;white-space:nowrap}
+  .pf-gallery-close{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-weight:700;font-size:13.5px;transition:color .25s,border-color .25s}
+  .pf-gallery-close:hover{color:var(--teal);border-color:rgba(94,234,212,.42)}
+  .card.is-hidden,.cards[hidden]{display:none}
+  .card.pf-in{animation:pfIn .45s ease both}
+  @keyframes pfIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .pf-empty{text-align:center;padding:56px 28px;border:1px dashed rgba(94,234,212,.35);border-radius:var(--radius);background:var(--panel)}
+  .pf-empty[hidden]{display:none}
+  .pf-empty h3{font-family:var(--font-d);font-weight:400;font-size:19px;line-height:1.4;margin-bottom:12px}
+  .pf-empty p{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto 26px}
+  @media (max-width:960px){
+    .pf-cats{gap:16px}
+    .pf-cat{aspect-ratio:3/4}
+    .pf-cat-info{padding:18px 16px 18px}
+    .pf-cat-name{font-size:11.5px;letter-spacing:.12em;padding:8px 14px}
+    .pf-cat-go{padding:8px 13px;font-size:13px}
+  }
+  @media (max-width:640px){
+    .pf-cats{grid-template-columns:1fr;gap:14px}
+    .pf-cat{aspect-ratio:16/10}
+    .pf-cat-media.is-placeholder{padding-bottom:8%}
+    .pf-cat-media.is-placeholder svg{width:48px;height:48px}
+    .pf-cat-info{padding:18px 18px 18px}
+    .pf-cat-name{font-size:12.5px;letter-spacing:.14em}
+    .pf-gallery{margin-top:32px}
+    .pf-gallery-head{flex-wrap:wrap;margin-bottom:24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .card.pf-in,.pf-gallery{animation:none}
+  }
+
   /* ---------- advantages ---------- */
   #advantages{background:linear-gradient(180deg,var(--bg) 0%,#182331 50%,var(--bg) 100%)}
   .adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -294,6 +350,15 @@
   .form-success h4{font-family:var(--font-d);font-weight:400;font-size:19px;margin-bottom:12px}
   .form-success p{color:var(--muted);font-size:14.5px;margin-bottom:24px}
   .form-success .soc{padding:11px 18px;font-size:13px}
+  .form-submit:disabled{opacity:.7;cursor:wait;transform:none}
+  .hp-field{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+  .form-fail{margin-top:16px;padding:18px;border-radius:16px;border:1px solid rgba(248,113,113,.45);background:rgba(248,113,113,.08);font-size:14px;color:var(--muted)}
+  .form-fail[hidden]{display:none}
+  .form-fail b{color:var(--text)}
+  .form-fail p{margin-bottom:14px}
+  .form-fail .soc{padding:10px 16px;font-size:13px}
+  .form-fail-mail{display:inline-flex;align-items:center;padding:10px 16px;border-radius:14px;border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--text);transition:border-color .25s,color .25s}
+  .form-fail-mail:hover{border-color:var(--teal);color:var(--teal)}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--line);background:var(--bg2);padding:70px 0 0}
@@ -479,11 +544,71 @@
     <div class="sec-head reveal">
       <span class="sec-eyebrow">Портфолио</span>
       <h2>Избранные <span class="serif">проекты</span></h2>
-      <p class="sec-sub">Кухни и офисные пространства, которые мы спроектировали, произвели и собрали под ключ — от первого замера до финальной уборки.</p>
+      <p class="sec-sub">Кухни, шкафы, гардеробные и офисные пространства, которые мы спроектировали, произвели и собрали под ключ — от первого замера до финальной уборки.</p>
     </div>
-    <div class="cards">
 
-      <article class="card reveal">
+    <!-- Плитки-разделы портфолио. Нажатие открывает галерею раздела.
+         Чтобы проект попал в галерею, укажите у карточки
+         data-cat="kitchens" (Кухни), "wardrobes" (Шкафы и гардеробные) или "offices" (Офисы). -->
+    <div class="pf-cats">
+      <button class="pf-cat reveal" type="button" data-cat-open="kitchens" aria-expanded="false" aria-controls="pf-gallery">
+        <!-- Фото на плитке: замените src на любое фото кухни -->
+        <span class="pf-cat-media"><img src="images/designarena_image_5w4nu3jt(1).png" alt="" loading="lazy"></span>
+        <span class="pf-cat-name">Кухни</span>
+        <span class="pf-cat-info">
+          <span class="pf-cat-count" data-count="kitchens"></span>
+          <span class="pf-cat-go">Открыть галерею
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </span>
+      </button>
+      <button class="pf-cat reveal" type="button" data-cat-open="wardrobes" aria-expanded="false" aria-controls="pf-gallery">
+        <!-- Фото пока нет: показывается иконка. Когда появится фото, замените содержимое на
+             <img src="images/Ваше фото.jpg" alt="" loading="lazy"> (или просто добавьте карточку
+             шкафа в галерею — её фото подставится на плитку автоматически). -->
+        <span class="pf-cat-media is-placeholder">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="18" rx="1.5"/><path d="M12 2.5v18"/><path d="M10 10.5v3M14 10.5v3"/><path d="M6.5 20.5v1.5M17.5 20.5v1.5"/><path d="M4 6.5h8"/></svg>
+        </span>
+        <span class="pf-cat-name">Шкафы и гардеробные</span>
+        <span class="pf-cat-info">
+          <span class="pf-cat-count" data-count="wardrobes"></span>
+          <span class="pf-cat-go">Открыть галерею
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </span>
+      </button>
+      <button class="pf-cat reveal" type="button" data-cat-open="offices" aria-expanded="false" aria-controls="pf-gallery">
+        <!-- Фото на плитке: замените src на любое фото офиса -->
+        <span class="pf-cat-media"><img src="WhatsApp Image 2026-09-17 at 16.55.12(1).jpeg" alt="" loading="lazy"></span>
+        <span class="pf-cat-name">Офисы</span>
+        <span class="pf-cat-info">
+          <span class="pf-cat-count" data-count="offices"></span>
+          <span class="pf-cat-go">Открыть галерею
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </span>
+      </button>
+    </div>
+
+    <!-- Галерея выбранного раздела (скрыта, пока раздел не выбран) -->
+    <div class="pf-gallery" id="pf-gallery" role="region" aria-labelledby="pf-gallery-title" hidden>
+      <div class="pf-gallery-head">
+        <h3 id="pf-gallery-title"></h3>
+        <button class="pf-gallery-close" type="button" id="pf-gallery-close">Свернуть
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Показывается, когда в разделе ещё нет проектов -->
+      <div class="pf-empty" id="pf-empty" hidden>
+        <h3>Скоро здесь появятся наши шкафы и гардеробные</h3>
+        <p>Сейчас готовим фотографии свежих проектов. Шкафы-купе, распашные шкафы и гардеробные системы делаем по вашим размерам — пришлём примеры работ в мессенджер и рассчитаем стоимость.</p>
+        <a class="btn btn-primary btn-sm" href="#lead" data-ptype="Шкаф или гардеробная">Рассчитать шкаф или гардеробную</a>
+      </div>
+
+    <div class="cards" id="pf-cards">
+
+      <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/designarena_image_5w4nu3jt(1).png" alt="Кухня в стиле минимализм для ЖК Вересаево" loading="lazy">
           <span class="tag">Кухня</span>
@@ -498,22 +623,22 @@
         </div>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/designarena_image_agk3zyfa(1).png" alt="Кухня в стиле прованс с бирюзовыми фасадами" loading="lazy">
           <span class="tag">Кухня</span>
         </div>
         <div class="card-body">
           <h3>Кухня в стиле прованс</h3>
-          <p class="card-desc">Уютная угловая кухня с фасадами из окрашенного МДФ насыщенного бирюзового оттенка, декоративной фрезеровкой и стеклянными вставками, светлая столешница, открытые полки, встроенная техника и остров-барная стойка. Фартук из декоративной плитки с орнаментом.</p>
-          <p class="card-quote">Выразительные бирюзовые фасады и винтажная плитка создают атмосферу тёплого загородного дома.</p>
+          <p class="card-desc">Уютная угловая кухня с фасадами из окрашенного МДФ насыщенного бирюзового оттенка, декоративной фрезеровкой и стеклянными вставками, светлая столешница, открытые полки, встроенная техника и остров-барная стойка. Фартук из декоративной плитки с орнаментом, деревянные и керамические детали, естественный дневной свет.</p>
+          <p class="card-quote">Выразительные бирюзовые фасады и винтажная плитка создают атмосферу тёплого загородного дома. Светлая столешница, удобный остров и продуманное хранение объединяют декоративность с комфортом, а натуральные фактуры добавляют интерьеру уюта.</p>
           <button class="card-more" data-project="p3">Смотреть проект
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/designarena_image_v8egivec(1).png" alt="Кухня для семьи в классическом стиле" loading="lazy">
           <span class="tag">Кухня</span>
@@ -528,7 +653,7 @@
         </div>
       </article>
       
-<article class="card reveal">
+<article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Современная кухня с открытой кладовой (2).png" alt="Современная кухня с открытой кладовой (2)" loading="lazy">
           <span class="tag">Кухня</span>
@@ -543,13 +668,13 @@
         </div>
       </article>
       
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/кухня в графитовом цвете.png" alt="кухня в графитовом цвете" loading="lazy">
           <span class="tag">Кухня</span>
         </div>
         <div class="card-body">
-          <h3>Современная кухня в графитовом цвете»</h3>
+          <h3>Современная кухня в графитовом цвете</h3>
           <p class="card-desc">Лаконичная кухня с матовыми фасадами в глубоком графитовом оттенке.</p>
           <p class="card-quote">Продуманная планировка, встроенная техника и максимум функциональности на небольшой площади.</p>
           <button class="card-more" data-project="p1">Смотреть проект
@@ -558,7 +683,7 @@
         </div>
       </article>
       
-      <article class="card reveal">
+      <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Классическая кухня в светлых тонах.jpg" alt="Классическая кухня в светлых тонах" loading="lazy">
           <span class="tag">Кухня</span>
@@ -573,7 +698,7 @@
         </div>
       </article>
 
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Белая угловая кухня.jpg" alt="Белая угловая кухня" loading="lazy">
           <span class="tag">Кухня</span>
@@ -588,7 +713,7 @@
         </div>
       </article>
 
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Кухня беж угловая.jpg" alt="Кухня беж угловая" loading="lazy">
           <span class="tag">Кухня</span>
@@ -603,7 +728,7 @@
         </div>
       </article>
 
-     <article class="card reveal">
+     <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Кухня из массива.png" alt="Кухня из массива" loading="lazy">
           <span class="tag">Кухня</span>
@@ -618,7 +743,7 @@
         </div>
       </article> 
       
-<article class="card reveal">
+<article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Классическая кухня в тёплых древесных тонах.png" alt="Классическая кухня в тёплых древесных тонах" loading="lazy">
           <span class="tag">Кухня</span>
@@ -633,7 +758,7 @@
         </div>
       </article>  
       
-      <article class="card reveal">
+      <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Кухня оливка.png" alt="Кухня оливка" loading="lazy">
           <span class="tag">Кухня</span>
@@ -648,7 +773,7 @@
         </div>
       </article>   
 
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/кухня с золотой патиной.jpg" alt="кухня с золотой патиной" loading="lazy">
           <span class="tag">Кухня</span>
@@ -663,7 +788,7 @@
         </div>
       </article>
 
- <article class="card reveal">
+ <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Классическая кухня с мраморным фартуком.jpg" alt="Классическая кухня с мраморным фартуком" loading="lazy">
           <span class="tag">Кухня</span>
@@ -678,7 +803,7 @@
         </div>
       </article>
       
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Моно кухня.jpg" alt="Моно кухня" loading="lazy">
           <span class="tag">Кухня</span>
@@ -693,7 +818,7 @@
         </div>
       </article>
 
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Просторная кухня в классическом стиле.jpg" alt="Просторная кухня в классическом стиле" loading="lazy">
           <span class="tag">Кухня</span>
@@ -708,7 +833,7 @@
         </div>
       </article>
 
-       <article class="card reveal">
+       <article class="card reveal" data-cat="kitchens">
         <div class="card-media">
           <img src="images/Светлая кухня в классическом стиле.jpg" alt="Светлая кухня в классическом стиле" loading="lazy">
           <span class="tag">Кухня</span>
@@ -723,22 +848,22 @@
         </div>
       </article>
       
-      <article class="card reveal">
+      <article class="card reveal" data-cat="offices">
         <div class="card-media">
           <img src="WhatsApp Image 2026-09-17 at 16.55.12(1).jpeg" alt="Современная мебель для офиса в классическом стиле, БЦ Гвардейский" loading="lazy">
           <span class="tag">Офис</span>
         </div>
         <div class="card-body">
           <h3>Современная мебель для офиса в классическом стиле. БЦ «Гвардейский»</h3>
-          <p class="card-desc">Светлый современный офис с панорамными окнами, открытой планировкой и несколькими рабочими зонами. Офисные столы и тумбы из натурального дерева тёплого орехового оттенка, эргономичные белые кресла, встроенные стеллажи и шкафы.</p>
-          <p class="card-quote">Премиальная офисная атмосфера: тёплая фактура древесины гармонично сочетается с белыми эргономичными креслами и холодными оттенками камня.</p>
+          <p class="card-desc">Светлый современный офис с панорамными окнами, открытой планировкой и несколькими рабочими зонами. Офисные столы и тумбы из натурального дерева тёплого орехового оттенка, эргономичные белые кресла, встроенные стеллажи и шкафы для хранения документов и книг.</p>
+          <p class="card-quote">Премиальная офисная атмосфера: тёплая фактура древесины гармонично сочетается с белыми эргономичными креслами и холодными оттенками камня. Продуманная система столов, тумб и стеллажей обеспечивает комфортную организацию пространства, а лаконичные формы подчёркивают элегантный минималистичный стиль офиса.</p>
           <button class="card-more" data-project="p2">Смотреть проект
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
       </article>
       
-       <article class="card reveal">
+       <article class="card reveal" data-cat="offices">
         <div class="card-media">
           <img src="images/Офисная мебель.png" alt="Офисная мебель" loading="lazy">
           <span class="tag">Офис</span>
@@ -753,7 +878,7 @@
         </div>
       </article>   
 
-      <article class="card reveal">
+      <article class="card reveal" data-cat="offices">
         <div class="card-media">
           <img src="images/Кабинет руководителя.png" alt="Кабинет руководителя" loading="lazy">
           <span class="tag">Офис</span>
@@ -768,7 +893,7 @@
         </div>
       </article>   
 
-       <article class="card reveal">
+       <article class="card reveal" data-cat="offices">
         <div class="card-media">
           <img src="images/Современный офис.png" alt="Современный офис" loading="lazy">
           <span class="tag">Офис</span>
@@ -781,8 +906,28 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
-      </article>   
+      </article>
+
+      <!-- ШАБЛОН карточки для раздела «Шкафы и гардеробные».
+           Скопируйте блок, уберите знаки комментария вокруг него и замените фото и тексты.
+           Как только появится хотя бы одна такая карточка, заглушка раздела скроется сама.
+      <article class="card reveal" data-cat="wardrobes">
+        <div class="card-media">
+          <img src="images/Название фото.jpg" alt="Шкаф-купе с зеркальными дверями" loading="lazy">
+          <span class="tag">Гардеробная</span>
+        </div>
+        <div class="card-body">
+          <h3>Заголовок проекта</h3>
+          <p class="card-desc">Короткое описание: материалы, наполнение, размеры.</p>
+          <p class="card-quote">Одна-две фразы о главной идее проекта.</p>
+          <button class="card-more" type="button">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+      -->
     </div>
+    </div><!-- /.pf-gallery -->
   </div>
 </section>
 
@@ -904,6 +1049,7 @@
           <select id="ptype" name="ptype">
             <option value="" selected disabled>Выберите вариант</option>
             <option value="Кухня на заказ">Кухня на заказ</option>
+            <option value="Шкаф или гардеробная">Шкаф или гардеробная</option>
             <option value="Мебель для офиса">Мебель для офиса</option>
             <option value="Другое">Другое</option>
           </select>
@@ -918,7 +1064,21 @@
           <label for="pcomment">Комментарии</label>
           <textarea id="pcomment" name="pcomment" placeholder="Пожелания, стиль, сроки, ссылки на планировку…"></textarea>
         </div>
+        <!-- Поле-ловушка для спам-ботов: скрыто от людей, не удалять -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Сайт</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <button type="submit" class="btn btn-primary form-submit">Рассчитать стоимость</button>
+        <!-- Показывается, если заявку не удалось отправить -->
+        <div class="form-fail" id="formFail" role="alert" hidden>
+          <p><b>Не удалось отправить заявку.</b> Проверьте интернет и попробуйте ещё раз — или напишите нам напрямую, ответим за 15 минут:</p>
+          <div class="soc-row">
+            <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener">Telegram</a>
+            <a class="form-fail-mail" id="formFailMail" href="mailto:MebelK-61@yandex.ru">Отправить письмом</a>
+          </div>
+        </div>
         <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Ответим в течение 2 часов — обычно за 15 минут.</p>
       </form>
 
@@ -927,7 +1087,7 @@
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <h4>Спасибо! Заявка принята, мы свяжемся с вами в течение 15 минут</h4>
-        <p>Мы открыли ваше почтовое приложение с готовым письмом — просто нажмите «Отправить». Если письмо не создалось автоматически, напишите нам напрямую:</p>
+        <p>Менеджер уже получил вашу заявку. Если удобнее — напишите нам в мессенджер:</p>
         <div class="soc-row" style="justify-content:center">
           <a class="soc soc-wa" href="https://wa.me/79010007331" target="_blank" rel="noopener">WhatsApp</a>
           <a class="soc soc-tg" href="https://t.me/mebelkrostov" target="_blank" rel="noopener">Telegram</a>
@@ -1095,65 +1255,180 @@
     reveals.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* ---------- portfolio modal ---------- */
-  var PROJECTS = {
-    p1:{
-      tag:'Кухня',
-      title:'Кухня в стиле минимализм для ЖК «Вересаево»',
-      img:'https://i.postimg.cc/2SQNM7DL/designarena-image-5w4nu3jt.png',
-      desc:'Моно-кухня без верхних ручек. Светлая современная кухня с матовыми серо-бежевыми фасадами, каменной столешницей с мраморным рисунком, островом, встроенной техникой и мягкой LED-подсветкой.',
-      quote:'Лаконичная композиция без лишних деталей делает кухню визуально лёгкой, сохраняя максимум функциональности и комфорта.'
-    },
-    p2:{
-      tag:'Офис',
-      title:'Современная мебель для офиса в классическом стиле. БЦ «Гвардейский»',
-      img:'https://i.postimg.cc/wxRqFJ1z/Whats-App-Image-2026-09-17-at-16-55-12.jpg',
-      desc:'Светлый современный офис с панорамными окнами, открытой планировкой и несколькими рабочими зонами. В интерьере — офисные столы и тумбы из натурального дерева тёплого орехового оттенка, эргономичные белые кресла, встроенные стеллажи и шкафы для хранения документов и книг.',
-      quote:'Премиальная офисная атмосфера. Тёплая фактура древесины гармонично сочетается с белыми эргономичными креслами и холодными оттенками камня, создавая современную и спокойную рабочую атмосферу. Продуманная система столов, тумб и стеллажей обеспечивает комфортную организацию пространства, а лаконичные формы подчёркивают элегантный минималистичный стиль офиса.'
-    },
-    p3:{
-      tag:'Кухня',
-      title:'Кухня в стиле прованс',
-      img:'https://i.postimg.cc/8CnGmPGZ/designarena-image-agk3zyfa.png',
-      desc:'Уютная угловая кухня с фасадами из окрашенного МДФ насыщенного бирюзового оттенка, декоративной фрезеровкой и стеклянными вставками, светлая столешница, открытые полки, встроенная техника и остров-барная стойка. Фартук из декоративной плитки с орнаментом, деревянные и керамические детали, естественный дневной свет.',
-      quote:'Выразительные бирюзовые фасады и винтажная плитка создают атмосферу тёплого загородного дома. Светлая столешница, удобный остров и продуманное хранение объединяют декоративность с комфортом, а натуральные фактуры добавляют интерьеру уюта.'
-    },
-    p4:{
-      tag:'Кухня',
-      title:'Кухня для семьи в классическом стиле',
-      img:'https://i.postimg.cc/8CsQcQvb/designarena-image-v8egivec.png',
-      desc:'Элегантная кухня в классическом стиле с изысканными фасадами, декоративной резьбой и благородной светлой цветовой гаммой.',
-      quote:'Продуманная композиция сочетает выразительный декор с функциональностью, создавая гармоничное и уютное пространство для дома.'
-    }
-  };
+  /* ---------- portfolio: плитки-разделы и галерея ---------- */
+  // Тип заявки, который подставляется в форму для каждого раздела
+  var PF_PTYPE = { kitchens:'Кухня на заказ', wardrobes:'Шкаф или гардеробная', offices:'Мебель для офиса' };
+  // Адреса для прямых ссылок на раздел: mebel-krostov.ru/#kuhni и т.д.
+  var PF_HASH = { kitchens:'kuhni', wardrobes:'shkafy', offices:'ofisy' };
+  // Заголовки галерей
+  var PF_TITLE = { kitchens:'Кухни', wardrobes:'Шкафы и гардеробные', offices:'Офисы' };
 
+  var pfTiles = Array.prototype.slice.call(document.querySelectorAll('.pf-cat'));
+  var pfCards = Array.prototype.slice.call(document.querySelectorAll('#pf-cards .card'));
+  var pfGallery = document.getElementById('pf-gallery');
+  var pfTitle = document.getElementById('pf-gallery-title');
+  var pfPanel = document.getElementById('pf-cards');
+  var pfEmpty = document.getElementById('pf-empty');
+  var pfCurrent = null;
+
+  // «1 проект», «3 проекта», «16 проектов»
+  function pfPlural(n){
+    var m10 = n % 10, m100 = n % 100;
+    var w = (m10 === 1 && m100 !== 11) ? 'проект'
+          : (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) ? 'проекта' : 'проектов';
+    return n + ' ' + w;
+  }
+  function pfCount(cat){
+    return pfCards.filter(function(c){ return c.dataset.cat === cat; }).length;
+  }
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var n = pfCount(el.getAttribute('data-count'));
+    el.textContent = n > 0 ? pfPlural(n) : 'Скоро новые проекты';
+  });
+
+  // Если на плитке ещё нет фото, ставим фото первой работы из этого раздела
+  pfTiles.forEach(function(tile){
+    var media = tile.querySelector('.pf-cat-media.is-placeholder');
+    if(!media) return;
+    var first = pfCards.filter(function(c){ return c.dataset.cat === tile.dataset.catOpen; })[0];
+    var src = first && first.querySelector('.card-media img');
+    if(!src) return;
+    var img = document.createElement('img');
+    img.src = src.getAttribute('src');
+    img.alt = '';
+    img.loading = 'lazy';
+    media.innerHTML = '';
+    media.appendChild(img);
+    media.classList.remove('is-placeholder');
+  });
+
+  function pfSetHash(value){
+    if(window.history && history.replaceState) history.replaceState(null, '', '#' + value);
+  }
+
+  function openGallery(cat, opts){
+    opts = opts || {};
+    if(!PF_TITLE[cat]) return;
+    pfCurrent = cat;
+    pfTiles.forEach(function(t){
+      t.setAttribute('aria-expanded', t.dataset.catOpen === cat ? 'true' : 'false');
+    });
+
+    var shown = 0;
+    pfCards.forEach(function(card){
+      var match = card.dataset.cat === cat;
+      card.classList.toggle('is-hidden', !match);
+      card.classList.remove('pf-in');
+      if(match){
+        shown++;
+        card.classList.add('in'); // карточка сразу видима, без ожидания reveal-анимации
+        void card.offsetWidth;    // перезапуск анимации появления
+        card.style.animationDelay = Math.min(shown - 1, 6) * 60 + 'ms';
+        card.classList.add('pf-in');
+      }
+    });
+
+    pfTitle.innerHTML = '';
+    pfTitle.appendChild(document.createTextNode(PF_TITLE[cat]));
+    if(shown){
+      var small = document.createElement('small');
+      small.textContent = pfPlural(shown);
+      pfTitle.appendChild(small);
+    }
+    pfEmpty.hidden = shown > 0;
+    pfPanel.hidden = shown === 0;
+    pfGallery.hidden = false;
+
+    if(opts.updateHash) pfSetHash(PF_HASH[cat]);
+    if(opts.scroll !== false) pfGallery.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function closeGallery(){
+    if(!pfCurrent) return;
+    var tile = pfTiles.filter(function(t){ return t.dataset.catOpen === pfCurrent; })[0];
+    pfCurrent = null;
+    pfGallery.hidden = true;
+    pfTiles.forEach(function(t){ t.setAttribute('aria-expanded', 'false'); });
+    pfSetHash('portfolio');
+    if(tile){
+      tile.focus({preventScroll:true});
+      tile.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+
+  pfTiles.forEach(function(tile){
+    tile.addEventListener('click', function(){
+      if(pfCurrent === tile.dataset.catOpen) closeGallery();
+      else openGallery(tile.dataset.catOpen, {updateHash:true});
+    });
+  });
+  document.getElementById('pf-gallery-close').addEventListener('click', closeGallery);
+
+  // Открытие раздела по ссылке вида #kuhni / #shkafy / #ofisy
+  function pfFromHash(){
+    var h = location.hash.replace('#', '');
+    for(var cat in PF_HASH){
+      if(PF_HASH[cat] === h){
+        openGallery(cat, {scroll:false});
+        pfGallery.scrollIntoView();
+        return;
+      }
+    }
+  }
+  pfFromHash();
+  window.addEventListener('hashchange', pfFromHash);
+
+  /* ---------- выбор типа заявки в форме ---------- */
+  function presetPtype(value){
+    var sel = document.getElementById('ptype');
+    if(!sel || !value) return;
+    sel.value = value;
+    var f = sel.closest('.field');
+    if(f) f.classList.remove('error');
+  }
+  document.querySelectorAll('[data-ptype]').forEach(function(a){
+    a.addEventListener('click', function(){ presetPtype(a.getAttribute('data-ptype')); });
+  });
+
+  /* ---------- portfolio modal: данные берутся из самой карточки ---------- */
   var modal = document.getElementById('projectModal');
   var mImg = document.getElementById('mImg');
   var mTag = document.getElementById('mTag');
   var mTitle = document.getElementById('mTitle');
   var mDesc = document.getElementById('mDesc');
   var mQuote = document.getElementById('mQuote');
+  var mCurrentCat = null;
+  var mLastFocus = null;
 
-  function openModal(id){
-    var p = PROJECTS[id];
-    if(!p) return;
-    mImg.src = p.img;
-    mImg.alt = p.title;
-    mTag.textContent = p.tag;
-    mTitle.textContent = p.title;
-    mDesc.textContent = p.desc;
-    mQuote.textContent = p.quote;
+  function textOf(card, sel){
+    var el = card.querySelector(sel);
+    return el ? el.textContent.trim() : '';
+  }
+  function openModal(card){
+    var img = card.querySelector('.card-media img');
+    mImg.src = img ? (img.currentSrc || img.src) : '';
+    mImg.alt = img ? img.alt : '';
+    mTag.textContent = textOf(card, '.tag');
+    mTitle.textContent = textOf(card, 'h3');
+    mDesc.textContent = textOf(card, '.card-desc');
+    mQuote.textContent = textOf(card, '.card-quote');
+    mQuote.hidden = !mQuote.textContent;
+    mCurrentCat = card.dataset.cat || null;
+    mLastFocus = document.activeElement;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
+    var closeBtn = modal.querySelector('.modal-close');
+    if(closeBtn) closeBtn.focus();
   }
   function closeModal(){
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
+    if(mLastFocus && mLastFocus.focus) mLastFocus.focus();
   }
-  document.querySelectorAll('[data-project]').forEach(function(btn){
-    btn.addEventListener('click', function(){ openModal(btn.getAttribute('data-project')); });
+  document.querySelectorAll('#pf-cards .card-more').forEach(function(btn){
+    btn.addEventListener('click', function(){ openModal(btn.closest('.card')); });
   });
   modal.querySelectorAll('[data-close]').forEach(function(el){
     el.addEventListener('click', closeModal);
@@ -1165,7 +1440,11 @@
     }
   });
   var mCta = document.getElementById('mCta');
-  if(mCta) mCta.addEventListener('click', function(){ closeModal(); });
+  if(mCta) mCta.addEventListener('click', function(){
+    presetPtype(PF_PTYPE[mCurrentCat]);
+    mLastFocus = null; // фокус не возвращаем — переходим к форме
+    closeModal();
+  });
 
   /* ---------- phone mask ---------- */
   var phone = document.getElementById('phone');
@@ -1231,15 +1510,85 @@
       'Размеры/площадь: ' + psize,
       'Комментарии: ' + (comment || '—')
     ];
-    var subject = 'Заявка с сайта — Мебель-К';
-    var body = lines.join('\n');
-    /* Отправка данных на почту MebelK-61@yandex.ru */
-    window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    // Скрытое поле-ловушка: люди его не видят и не заполняют, спам-боты заполняют
+    var trap = document.getElementById('website');
+    if(trap && trap.value){ showSuccess(); return; }
 
-    form.style.display = 'none';
-    success.classList.add('show');
+    if(sending) return;
+    setSending(true);
 
+    sendToTelegram(lines.join('\n'))
+      .then(function(){
+        showSuccess();
+        if(typeof ym === 'function') ym(114144373, 'reachGoal', 'lead');
+      })
+      .catch(function(err){
+        if(window.console) console.warn('Заявка не ушла в Telegram:', err);
+        showFail(lines.join('\n'));
+      })
+      .then(function(){ setSending(false); });
   });
+
+  /* ---------- отправка заявки в Telegram ---------- */
+  // Заполните два значения ниже — см. файл ИНСТРУКЦИЯ-TELEGRAM.md
+  var TG_BOT_TOKEN = '9130668029:AAHF4PqiS7IAbbqi3Ww3uhr3HhZ_TpbZqrU';   // токен бота от @BotFather, вида 1234567890:AAH...
+  var TG_CHAT_ID   = '7370873773';   // ваш chat_id (число) или id группы (начинается с -100...)
+
+  var sending = false;
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var submitText = submitBtn ? submitBtn.textContent : '';
+  var fail = document.getElementById('formFail');
+
+  function setSending(on){
+    sending = on;
+    if(!submitBtn) return;
+    submitBtn.disabled = on;
+    submitBtn.textContent = on ? 'Отправляем…' : submitText;
+  }
+
+  function sendToTelegram(text){
+    if(!TG_BOT_TOKEN || !TG_CHAT_ID) return Promise.reject(new Error('Не заполнены TG_BOT_TOKEN / TG_CHAT_ID'));
+    if(!window.fetch) return Promise.reject(new Error('Браузер не поддерживает fetch'));
+
+    var body = new URLSearchParams();
+    body.append('chat_id', TG_CHAT_ID);
+    body.append('text', text + '\n\nСтраница: ' + location.href);
+    body.append('disable_web_page_preview', 'true');
+
+    // Ограничение по времени, чтобы посетитель не ждал вечно
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 12000) : null;
+
+    return fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
+      method: 'POST',
+      body: body,
+      signal: ctrl ? ctrl.signal : undefined
+    })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(timer) clearTimeout(timer);
+        if(!data || !data.ok) throw new Error((data && data.description) || 'Telegram отклонил запрос');
+        return data;
+      }, function(err){
+        if(timer) clearTimeout(timer);
+        throw err;
+      });
+  }
+
+  function showSuccess(){
+    form.style.display = 'none';
+    if(fail) fail.hidden = true;
+    success.classList.add('show');
+  }
+
+  // Запасной путь: если Telegram недоступен, предлагаем написать напрямую или отправить письмо
+  function showFail(text){
+    if(!fail){ return; }
+    var mail = document.getElementById('formFailMail');
+    if(mail) mail.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Заявка с сайта — Мебель-К') + '&body=' + encodeURIComponent(text);
+    fail.hidden = false;
+    fail.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
 })();
 </script>
 </body>
