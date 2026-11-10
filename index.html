@@ -612,12 +612,8 @@
         </span>
       </button>
       <button class="pf-cat reveal" type="button" data-cat-open="wardrobes" aria-expanded="false" aria-controls="pf-gallery">
-        <!-- Фото пока нет: показывается иконка. Когда появится фото, замените содержимое на
-             <img src="images/Ваше фото.jpg" alt="" loading="lazy"> (или просто добавьте карточку
-             шкафа в галерею — её фото подставится на плитку автоматически). -->
-        <span class="pf-cat-media is-placeholder">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="18" rx="1.5"/><path d="M12 2.5v18"/><path d="M10 10.5v3M14 10.5v3"/><path d="M6.5 20.5v1.5M17.5 20.5v1.5"/><path d="M4 6.5h8"/></svg>
-        </span>
+        <!-- Фото на плитке: замените src на любое фото шкафа или гардеробной -->
+        <span class="pf-cat-media"><img src="Просторная гардеробная комната.jpg" alt="" loading="lazy"></span>
         <span class="pf-cat-name">Шкафы и гардеробные</span>
         <span class="pf-cat-info">
           <span class="pf-cat-count" data-count="wardrobes"></span>
@@ -707,10 +703,10 @@
           <img src="images/Современная кухня с открытой кладовой (2).png" alt="Современная кухня с открытой кладовой (2)" loading="lazy">
           <span class="tag">Кухня</span>
         </div>
-   <template class="card-photos">
+        <template class="card-photos">
           <img src="Минималистичная кухня с открытой кладовой.png" alt="Минималистичная кухня с открытой кладовой">
-      <img src="Отрисованный проект .jpeg" alt="Отрисованный проект ">
-      </template>
+          <img src="Отрисованный проект .jpeg" alt="Отрисованный проект кухни со скрытой кладовой">
+        </template>
         <div class="card-body">
           <h3>Современная кухня со скрытой кладовой</h3>
           <p class="card-desc">Стильная просторная кухня в современном минималистичном стиле. Матовые фасады в серо-бежевом оттенке сочетаются с натуральной текстурой дерева, мраморной столешницей и подсветкой рабочей зоны.</p>
@@ -976,6 +972,106 @@
           <p class="card-desc">Современная офисная мебель в сочетании тёмных оттенков и фактуры дерева.</p>
           <p class="card-quote">Рабочие места и системы хранения выполнены в едином стиле и рассчитаны на комфортную ежедневную работу.</p>
           <button class="card-more" data-project="p1">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal" data-cat="offices">
+        <div class="card-media">
+          <img src="5.png" alt="Книжный шкаф-витрина в тёмном цвете с серебристой патиной и стеклянными дверями" loading="lazy">
+          <span class="tag">Кабинет</span>
+        </div>
+        <template class="card-photos">
+          <img src="стол.jpg" alt="Письменный стол в тёмном цвете с тумбой на четыре ящика">
+        </template>
+        <div class="card-body">
+          <h3>Мебель для кабинета в классическом стиле</h3>
+          <p class="card-desc">Книжный шкаф-витрина и письменный стол в едином стиле: тёмные фасады с филёнками и серебристой патиной, каннелированные пилястры, стеклянные дверцы и тумба с выдвижными ящиками.</p>
+          <p class="card-quote">Строгий тёмный тон и классические детали создают атмосферу солидного рабочего кабинета — дома или в офисе.</p>
+          <button class="card-more" type="button">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <!-- ================= ШКАФЫ И ГАРДЕРОБНЫЕ ================= -->
+      <article class="card reveal" data-cat="wardrobes">
+        <div class="card-media">
+          <img src="Просторная гардеробная комната.jpg" alt="Просторная гардеробная комната с белыми открытыми секциями и золотистыми штангами" loading="lazy">
+          <span class="tag">Гардеробная</span>
+        </div>
+        <div class="card-body">
+          <h3>Просторная гардеробная комната</h3>
+          <p class="card-desc">Светлая гардеробная во всю комнату: открытые секции с золотистыми штангами, полки, выдвижные ящики, брючница и туалетный столик у окна.</p>
+          <p class="card-quote">Белые корпуса и латунные акценты делают пространство лёгким, а продуманное зонирование вмещает весь гардероб семьи.</p>
+          <button class="card-more" type="button">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal" data-cat="wardrobes">
+        <div class="card-media">
+          <img src="designarena_image_7luicp01.jpg" alt="Встроенный шкаф-купе с дверями из молочного стекла в бронзовом профиле" loading="lazy">
+          <span class="tag">Шкаф-купе</span>
+        </div>
+        <template class="card-photos">
+          <img src="Классиечский шкаф купе.jpeg" alt="Шкаф-купе изнутри: пантограф, штанга и выдвижные ящики">
+        </template>
+        <div class="card-body">
+          <h3>Шкаф-купе со стеклянными дверями</h3>
+          <p class="card-desc">Встроенный шкаф-купе в нишу: раздвижные двери из матового стекла молочного оттенка в бронзовом профиле. Внутри — штанга, пантограф для одежды и выдвижные ящики.</p>
+          <p class="card-quote">Раздвижные двери экономят место в комнате, а пантограф позволяет использовать всю высоту шкафа до потолка.</p>
+          <button class="card-more" type="button">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal" data-cat="wardrobes">
+        <div class="card-media">
+          <img src="Элегантная прихожая.png" alt="Шкаф в прихожую с зеркальными фасадами и скруглённым реечным торцом" loading="lazy">
+          <span class="tag">Прихожая</span>
+        </div>
+        <template class="card-photos">
+          <img src="4.png" alt="Прихожая: зеркальный шкаф, мягкая панель с крючками и банкетка с ящиком">
+        </template>
+        <div class="card-body">
+          <h3>Прихожая с зеркальными фасадами</h3>
+          <p class="card-desc">Шкаф до потолка с фрезерованными фасадами, зеркальными дверями и скруглённым торцом из реек. Рядом — открытая зона с мягкой панелью, крючками и банкеткой с ящиком.</p>
+          <p class="card-quote">Зеркала визуально расширяют прихожую, а золотистые ручки подчёркивают классический характер интерьера.</p>
+          <button class="card-more" type="button">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal" data-cat="wardrobes">
+        <div class="card-media">
+          <img src="Скрытая зона для хранения.png" alt="Встроенные шкафы во всю стену спальни с подсвеченной нишей для кровати" loading="lazy">
+          <span class="tag">Шкаф</span>
+        </div>
+        <div class="card-body">
+          <h3>Шкафы в спальне вокруг кровати</h3>
+          <p class="card-desc">Система хранения во всю стену: высокие шкафы до потолка, антресоли над изголовьем и прикроватные тумбы с ящиками.</p>
+          <p class="card-quote">Ниша с LED-подсветкой обрамляет изголовье, а гладкие фасады без лишних деталей превращают шкафы в спокойную, цельную стену.</p>
+          <button class="card-more" type="button">Смотреть проект
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="card reveal" data-cat="wardrobes">
+        <div class="card-media">
+          <img src="Место для хранения под лестницей.png" alt="Встроенный шкаф с выкатными секциями под лестницей" loading="lazy">
+          <span class="tag">Хранение</span>
+        </div>
+        <div class="card-body">
+          <h3>Система хранения под лестницей</h3>
+          <p class="card-desc">Шкаф повторяет форму ступеней: распашные секции и выкатные модули на направляющих полного выдвижения.</p>
+          <p class="card-quote">Пространство под лестницей больше не пустует — здесь помещаются обувь, сезонные вещи и хозяйственные мелочи.</p>
+          <button class="card-more" type="button">Смотреть проект
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
